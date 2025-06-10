@@ -14,9 +14,18 @@ const userSchema = new Schema(
       lowercase: true,
       required: true,
     },
+    phoneNumber: {                    // NEW: For SMS notifications
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
+    },
+    inviteCode: {                     // NEW: For joining golf groups
+      type: String,
+      unique: true,
+      uppercase: true,
     },
   },
   {
@@ -31,10 +40,15 @@ const userSchema = new Schema(
   }
 );
 
+// Generate invite code for new users
 userSchema.pre('save', async function (next) {
-  // 'this' is the user document
+  // Generate unique invite code for new users
+  if (this.isNew && !this.inviteCode) {
+    this.inviteCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+  }
+  
+  // Hash password if modified
   if (!this.isModified('password')) return next();
-  // Replace the password with the computed hash
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
   next();
 });
