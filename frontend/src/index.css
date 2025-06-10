@@ -81,3 +81,17 @@ h2 {
 .error-message {
   color: rgb(166, 29, 29);
 }
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}

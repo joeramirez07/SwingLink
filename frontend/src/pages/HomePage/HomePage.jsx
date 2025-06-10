@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router";
 
-export default function HomePage() {
+export default function HomePage({ user }) {
   const navigate = useNavigate();
-
+  if (user) {
+    navigate("/groups");
+    return null;
+  }
   return (
     <div className="homepage">
       <section className="hero">
@@ -49,12 +52,11 @@ export default function HomePage() {
             </div>
             <div className="problem-card">
               <div className="problem-before">Forgotten tee times</div>
-              <div className="problem-after"> Automatic reminders</div>
+              <div className="problem-after">Automatic reminders</div>
             </div>
           </div>
         </div>
       </section>
-
       <section className="cta">
         <div className="container">
           <h3>Ready to Simplify Your Golf Plans?</h3>

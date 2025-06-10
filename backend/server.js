@@ -1,8 +1,7 @@
-const path = require("path"); 
+const path = require("path");
 const express = require("express");
 const logger = require("morgan");
 const app = express();
-
 
 require("dotenv").config();
 require("./db");

@@ -1,0 +1,36 @@
+:root {
+  --golf-green: #2d5016;
+  --golf-light-green: #7cb342;
+  --golf-sand: #f4f1e8;
+  --golf-white: #ffffff;
+  --golf-dark: #1a1a1a;
+  --golf-accent: #ff6b35;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--golf-sand);
+  color: var(--golf-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}

@@ -18,14 +18,14 @@ export default function App() {
       <section id="main-section">
         {user ? (
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage user={user} />} />
             <Route path="/groups" element={<GroupsPage />} />
             <Route path="/groups/new" element={<CreateGroupPage />} />
             <Route path="*" element={null} />
           </Routes>
         ) : (
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage user={user} />} />
             <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
             <Route path="/login" element={<LoginPage setUser={setUser} />} />
             <Route path="*" element={null} />
