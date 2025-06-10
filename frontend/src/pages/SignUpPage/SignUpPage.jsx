@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { signUp } from '../../services/authService';
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { signUp } from "../../services/authService";
 
 export default function SignUpPage({ setUser }) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirm: '',
+    name: "",
+    email: "",
+    password: "",
+    confirm: "",
   });
-  const [errorMsg, setErrorMsg] = useState('');
-   
+  const [errorMsg, setErrorMsg] = useState("");
+
   const navigate = useNavigate();
 
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
-    setErrorMsg('');
+    setErrorMsg("");
   }
 
   async function handleSubmit(evt) {
@@ -23,9 +23,9 @@ export default function SignUpPage({ setUser }) {
     try {
       const user = await signUp(formData);
       setUser(user);
-      navigate('/posts');
+      navigate("/posts");
     } catch (err) {
-      setErrorMsg('Sign Up Failed - Try Again');
+      setErrorMsg("Sign Up Failed - Try Again");
     }
   }
 

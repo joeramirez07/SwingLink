@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
@@ -7,12 +7,12 @@ const postSchema = new Schema(
     author: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: 'User'
-    }
+      ref: "User",
+    },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model("Post", postSchema);

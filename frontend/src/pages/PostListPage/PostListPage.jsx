@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import * as postService from '../../services/postService';
+import { useState, useEffect } from "react";
+import * as postService from "../../services/postService";
 
 export default function PostListPage() {
   const [posts, setPosts] = useState([]);
@@ -15,13 +15,15 @@ export default function PostListPage() {
   return (
     <>
       <h1>Post List</h1>
-      {posts.length ? 
+      {posts.length ? (
         <ul>
-          {posts.map((post) => <li key={post._id}>{post.content}</li>)}
+          {posts.map((post) => (
+            <li key={post._id}>{post.content}</li>
+          ))}
         </ul>
-        :
+      ) : (
         <p>No Posts Yet!</p>
-      }
+      )}
     </>
   );
 }

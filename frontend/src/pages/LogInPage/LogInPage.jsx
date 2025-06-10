@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import * as authService from '../../services/authService';
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import * as authService from "../../services/authService";
 
 export default function LogInPage({ setUser }) {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
-  const [errorMsg, setErrorMsg] = useState('');
-  
+  const [errorMsg, setErrorMsg] = useState("");
+
   const navigate = useNavigate();
 
   async function handleSubmit(evt) {
@@ -16,15 +16,15 @@ export default function LogInPage({ setUser }) {
     try {
       const user = await authService.logIn(formData);
       setUser(user);
-      navigate('/posts');
+      navigate("/posts");
     } catch (err) {
-      setErrorMsg('Log In Failed - Try Again');
+      setErrorMsg("Log In Failed - Try Again");
     }
   }
 
   function handleChange(evt) {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
-    setErrorMsg('');
+    setErrorMsg("");
   }
 
   return (

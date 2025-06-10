@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import * as postService from '../../services/postService';
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import * as postService from "../../services/postService";
 
 export default function NewPostPage() {
-  const [content, setContent] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
-  
+  const [content, setContent] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
   const navigate = useNavigate();
 
   async function handleSubmit(evt) {
@@ -13,9 +13,9 @@ export default function NewPostPage() {
     try {
       // sendRequest is expecting an object as the payload
       await postService.create({ content });
-      navigate('/posts');
+      navigate("/posts");
     } catch (err) {
-      setErrorMsg('Adding Post Failed');
+      setErrorMsg("Adding Post Failed");
     }
   }
 
