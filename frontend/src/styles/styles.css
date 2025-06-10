@@ -7,30 +7,72 @@
   --golf-accent: #ff6b35;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 5 auto;
+  padding: 1rem;
+}
+
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--golf-sand);
   color: var(--golf-dark);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-body {
-  font-family: "Montserrat", sans-serif;
-}
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
 .nav-links {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+}
+
+.problem-card {
+  font-size: larger;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+  background-color: var(--golf-green);
+  color: var(--golf-white);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero-section {
+  background-color: var(--golf-green);
+  color: var(--golf-white);
+  padding: 5rem;
+  text-align: center;
+}
+.hero-subtitle {
+  font-size: 1.89rem;
+  font-weight: bold;
+}
+
+.hero-description {
+  font-size: 1.22rem;
+  margin-top: 1rem;
 }

@@ -3,14 +3,26 @@ import { useNavigate } from "react-router";
 export default function HomePage({ user }) {
   const navigate = useNavigate();
   if (user) {
-    navigate("/groups");
-    return null;
+    return (
+      <div className="dashboard">
+        <h2>Time to Hit the Links, {user.name}!</h2>
+        <p>Let's Tee Off:</p>
+        <ul>
+          <li>
+            <a href="/groups">Your Golf Groups</a>
+          </li>
+          <li>
+            <a href="/groups/new">Create a New Group</a>
+          </li>
+        </ul>
+      </div>
+    );
   }
   return (
     <div className="homepage">
       <section className="hero">
         <div className="container">
-          <h1 className="hero-title">GOLFLINK</h1>
+          <h1 className="hero-title"></h1>
           <h2 className="hero-subtitle">
             Organize Golf Outings with Your Friends the Easy Way
           </h2>
@@ -18,20 +30,6 @@ export default function HomePage({ user }) {
             No more "Who's playing Sunday?" texts. SwingLink makes golf
             coordination simple.
           </p>
-          <div className="hero-buttons">
-            <button
-              className="btn-primary btn-large"
-              onClick={() => navigate("/signup")}
-            >
-              Get Started - It's Free
-            </button>
-            <button
-              className="btn-secondary"
-              onClick={() => navigate("/login")}
-            >
-              Sign In
-            </button>
-          </div>
           <p className="hero-note">
             Join in 30 seconds. No credit card required.
           </p>
