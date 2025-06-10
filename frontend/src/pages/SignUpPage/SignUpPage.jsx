@@ -35,7 +35,7 @@ export default function SignUpPage({ setUser }) {
   return (
     <div className="container">
       <div className="signup-card">
-        <h2 className="golf-header">🏌️ Join SwingLink</h2>
+        <h2 className="golf-header">Join SwingLink</h2>
         <p className="golf-subtitle">Golf planning made simple</p>
 
         <form autoComplete="off" onSubmit={handleSubmit} className="golf-form">

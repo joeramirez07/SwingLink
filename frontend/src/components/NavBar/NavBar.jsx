@@ -10,12 +10,11 @@ export default function NavBar({ user, setUser }) {
     setUser(null);
     navigate("/");
   }
-
   return (
     <nav className="NavBar">
       <div className="nav-brand">
         <NavLink to="/" className="brand-link">
-          🏌️ SwingLink
+           SwingLink
         </NavLink>
       </div>
 

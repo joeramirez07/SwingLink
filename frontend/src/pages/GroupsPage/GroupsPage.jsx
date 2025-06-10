@@ -31,7 +31,7 @@ export default function PostListPage() {
   return (
     <div className="container">
       <div className="groups-page">
-        <h1>🏌️ My Golf Groups</h1>
+        <h1> My Golf Groups</h1>
         <p className="groups-subtitle">Your golf crews and upcoming rounds</p>
 
         {errorMsg && <p className="error-message">{errorMsg}</p>}

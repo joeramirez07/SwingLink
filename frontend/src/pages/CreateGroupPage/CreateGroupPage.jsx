@@ -21,7 +21,7 @@ export default function NewPostPage() {
   return (
     <div className="container">
       <div className="create-group-card">
-        <h2>🏌️ Create New Golf Group</h2>
+        <h2>Create New Golf Group</h2>
         <p>Give your golf crew a name!</p>
 
         <form onSubmit={handleSubmit} className="golf-form">
