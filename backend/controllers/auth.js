@@ -2,11 +2,6 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-module.exports = {
-  signUp,
-  logIn,
-};
-
 async function logIn(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -32,13 +27,11 @@ async function signUp(req, res) {
   }
 }
 
-/*--- Helper Functions ---*/
-
 function createJWT(user) {
-  return jwt.sign(
-    // data payload
-    { user },
-    process.env.SECRET,
-    { expiresIn: "24h" },
-  );
+  return jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
 }
+
+module.exports = {
+  signUp,
+  logIn,
+};

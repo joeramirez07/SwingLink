@@ -8,33 +8,44 @@ export default function NavBar({ user, setUser }) {
   function handleLogOut() {
     logOut();
     setUser(null);
-    // The <Link> that was clicked will navigate to "/"
+    navigate("/");
   }
 
   return (
     <nav className="NavBar">
-      <NavLink to="/">Home</NavLink>
-      &nbsp; | &nbsp;
-      {user ? (
-        <>
-          <NavLink to="/posts" end>
-            Post List
-          </NavLink>
-          &nbsp; | &nbsp;
-          <NavLink to="/posts/new">New Post</NavLink>
-          &nbsp; | &nbsp;
-          <Link to="/" onClick={handleLogOut}>
-            Log Out
-          </Link>
-          <span>Welcome, {user.name}</span>
-        </>
-      ) : (
-        <>
-          <NavLink to="/login">Log In</NavLink>
-          &nbsp; | &nbsp;
-          <NavLink to="/signup">Sign Up</NavLink>
-        </>
-      )}
+      <div className="nav-brand">
+        <NavLink to="/" className="brand-link">
+          🏌️ SwingLink
+        </NavLink>
+      </div>
+
+      <div className="nav-links">
+        {user ? (
+          <>
+            <NavLink to="/groups" end className="nav-link">
+              My Groups
+            </NavLink>
+            <NavLink to="/groups/new" className="nav-link">
+              Create Group
+            </NavLink>
+            <div className="user-section">
+              <span className="welcome-text">Welcome, {user.name}!</span>
+              <Link to="/" onClick={handleLogOut} className="logout-link">
+                Log Out
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <NavLink to="/login" className="nav-link">
+              Log In
+            </NavLink>
+            <NavLink to="/signup" className="nav-link btn-signup">
+              Sign Up
+            </NavLink>
+          </>
+        )}
+      </div>
     </nav>
   );
 }

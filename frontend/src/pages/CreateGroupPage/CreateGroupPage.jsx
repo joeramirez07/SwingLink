@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import * as groupService from "../../services/groupService";
 
-export default function NewPostPage() {  // Keep the same component name for now
+export default function NewPostPage() {
   const [teamName, setTeamName] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -12,7 +12,7 @@ export default function NewPostPage() {  // Keep the same component name for now
     evt.preventDefault();
     try {
       await groupService.createGroup({ teamName });
-      navigate("/groups");  // Navigate to groups page instead of posts
+      navigate("/groups");
     } catch (err) {
       setErrorMsg("Creating Golf Group Failed");
     }
@@ -23,7 +23,7 @@ export default function NewPostPage() {  // Keep the same component name for now
       <div className="create-group-card">
         <h2>🏌️ Create New Golf Group</h2>
         <p>Give your golf crew a name!</p>
-        
+
         <form onSubmit={handleSubmit} className="golf-form">
           <div className="form-group">
             <label>Team Name</label>

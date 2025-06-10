@@ -1,30 +1,84 @@
 .NavBar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 2vmin;
-  font-size: 2vmin;
+  padding: 1rem 2rem;
+  background-color: var(--golf-green);
+  color: var(--golf-white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.NavBar {
-  a {
-    border-radius: 0.8vmin;
-    padding: 0.5vmin 1.5vmin;
-    text-decoration: none;
-    color: #1a1a1a;
-  }
+.nav-brand .brand-link {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--golf-white);
+}
 
-  a:hover {
-    background-color: #1a1a1a;
-    color: whitesmoke;
-  }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
 
-  a.active {
-    background-color: rebeccapurple;
-    color: whitesmoke;
-  }
+.nav-link {
+  text-decoration: none;
+  color: var(--golf-white);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
 
-  span {
-    color: rgb(108, 9, 87);
+.nav-link:hover {
+  background-color: var(--golf-light-green);
+}
+
+.nav-link.active {
+  background-color: var(--golf-light-green);
+  font-weight: bold;
+}
+
+.btn-signup {
+  background-color: var(--golf-accent);
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.btn-signup:hover {
+  background-color: #ff8c5a;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcome-text {
+  font-size: 0.9rem;
+  color: var(--golf-sand);
+}
+
+.logout-link {
+  color: var(--golf-white);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--golf-white);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.logout-link:hover {
+  background-color: var(--golf-white);
+  color: var(--golf-green);
+}
+
+@media (max-width: 768px) {
+  .NavBar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
   }
 }

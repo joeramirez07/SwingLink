@@ -6,7 +6,7 @@ export default function SignUpPage({ setUser }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phoneNumber: "",  // NEW: Added for golf invites
+    phoneNumber: "",
     password: "",
     confirm: "",
   });
@@ -24,7 +24,7 @@ export default function SignUpPage({ setUser }) {
     try {
       const user = await signUp(formData);
       setUser(user);
-      navigate("/groups");  // Navigate to groups instead of posts
+      navigate("/groups");
     } catch (err) {
       setErrorMsg("Sign Up Failed - Try Again");
     }
@@ -37,7 +37,7 @@ export default function SignUpPage({ setUser }) {
       <div className="signup-card">
         <h2 className="golf-header">🏌️ Join SwingLink</h2>
         <p className="golf-subtitle">Golf planning made simple</p>
-        
+
         <form autoComplete="off" onSubmit={handleSubmit} className="golf-form">
           <div className="form-group">
             <label>Name</label>
@@ -104,9 +104,9 @@ export default function SignUpPage({ setUser }) {
             Join the Golf Community
           </button>
         </form>
-        
+
         <p className="error-message">&nbsp;{errorMsg}</p>
-        
+
         <p className="signin-link">
           Already have an account? <a href="/login">Sign In</a>
         </p>
