@@ -11,8 +11,8 @@ app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.use(express.json());
 app.use(require("./middleware/checkToken"));
 app.use("/api/auth", require("./routes/auth"));
-app.use("/api/posts", require("./routes/posts"));
 app.use("/api/groups", require("./routes/groups"));
+app.use("/api/outings", require("./routes/outings"));
 
 app.get("/*splat", function (req, res) {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
