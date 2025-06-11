@@ -94,7 +94,7 @@ async function createOuting(req, res) {
 async function rsvpToOuting(req, res) {
   try {
     const { groupId, outingId } = req.params;
-    const { rsvpStatus } = req.body; 
+    const { rsvpStatus } = req.body;
 
     const group = await Group.findById(groupId);
     if (!group) {
