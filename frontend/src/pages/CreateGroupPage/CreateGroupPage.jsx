@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import * as groupService from "../../services/groupService";
 
-export default function NewPostPage() {
+export default function CreateGroupPage() {
   const [teamName, setTeamName] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 

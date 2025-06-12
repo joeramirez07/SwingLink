@@ -1,6 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const playerSchema = new Schema(
+  {
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    userName: { type: String, required: true },
+    cancelled: { type: Boolean, default: false },
+  },
+  { timestamps: true }
+);
+
 const outingSchema = new Schema(
   {
     courseName: { type: String, required: true },
@@ -8,16 +17,7 @@ const outingSchema = new Schema(
     time: { type: String, required: true },
     notes: { type: String },
     createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
-    players: [
-      {
-        userId: { type: Schema.Types.ObjectId, ref: "User" },
-        rsvpStatus: {
-          type: String,
-          enum: ["yes", "no", "maybe", "pending"],
-          default: "pending",
-        },
-      },
-    ],
+    players: [playerSchema],
   },
   { timestamps: true },
 );
