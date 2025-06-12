@@ -41,8 +41,8 @@ body {
   padding: 1rem;
   margin: 1rem 0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #333;
+  border: 1px solid rgba(155, 145, 170, 0.3);
+  color: #faf8f8;
   transition: all 0.3s ease;
 }
 

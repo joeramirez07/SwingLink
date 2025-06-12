@@ -7,7 +7,7 @@ const playerSchema = new Schema(
     userName: { type: String, required: true },
     cancelled: { type: Boolean, default: false },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const outingSchema = new Schema(

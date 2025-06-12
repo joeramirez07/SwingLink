@@ -23,8 +23,6 @@ export async function createOuting(groupId, outingData) {
   return sendRequest(`${BASE_URL}/${groupId}/outings`, "POST", outingData);
 }
 
-
 export async function rsvpToOuting(outingId) {
   return sendRequest(`/api/outings/${outingId}/rsvp`, "POST");
 }
-
