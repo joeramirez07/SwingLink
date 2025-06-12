@@ -23,9 +23,8 @@ export async function createOuting(groupId, outingData) {
   return sendRequest(`${BASE_URL}/${groupId}/outings`, "POST", outingData);
 }
 
-// RSVP
-export async function rsvpToOuting(groupId, outingId, rsvpStatus) {
-  return sendRequest(`${BASE_URL}/${groupId}/outings/${outingId}/rsvp`, "PUT", {
-    rsvpStatus,
-  });
+
+export async function rsvpToOuting(outingId) {
+  return sendRequest(`/api/outings/${outingId}/rsvp`, "POST");
 }
+
