@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from "react-router";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { logOut } from "../../services/authService";
 import "./NavBar.css";
 

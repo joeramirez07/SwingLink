@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router";
+import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../services/authService";
 import HomePage from "../HomePage/HomePage";
 import GroupsPage from "../GroupsPage/GroupsPage";
@@ -7,6 +7,8 @@ import CreateGroupPage from "../CreateGroupPage/CreateGroupPage";
 import SignUpPage from "../SignUpPage/SignUpPage";
 import LoginPage from "../LoginPage/LoginPage";
 import NavBar from "../../components/NavBar/NavBar";
+import GroupDetailsPage from "../GroupDetailsPage/GroupDetailsPage";
+import CreateOutingPage from "../CreateOutingPage/CreateOutingPage";
 import "./App.css";
 
 export default function App() {
@@ -22,6 +24,8 @@ export default function App() {
             <Route path="/groups" element={<GroupsPage />} />
             <Route path="/groups/new" element={<CreateGroupPage />} />
             <Route path="*" element={null} />
+            <Route path="/groups/:id" element={<GroupDetailsPage />} />
+            <Route path="/groups/:id/outings/new" element={<CreateOutingPage />} />
           </Routes>
         ) : (
           <Routes>

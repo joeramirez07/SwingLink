@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as groupService from "../../services/groupService";
-import { useNavigate } from "react-router"; // Importing useNavigate for potential navigation needs
+import { useNavigate } from "react-router-dom"; // Importing useNavigate for potential navigation needs
 
 export default function GroupsPage() {
   const [groups, setGroups] = useState([]);
