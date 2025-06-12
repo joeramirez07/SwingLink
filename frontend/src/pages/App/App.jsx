@@ -25,7 +25,10 @@ export default function App() {
             <Route path="/groups/new" element={<CreateGroupPage />} />
             <Route path="*" element={null} />
             <Route path="/groups/:id" element={<GroupDetailsPage />} />
-            <Route path="/groups/:id/outings/new" element={<CreateOutingPage />} />
+            <Route
+              path="/groups/:id/outings/new"
+              element={<CreateOutingPage />}
+            />
           </Routes>
         ) : (
           <Routes>

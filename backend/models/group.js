@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const crypto = require("crypto");
 
 const playerSchema = new Schema(
   {
@@ -35,7 +36,7 @@ const groupSchema = new Schema(
 
 groupSchema.pre("save", function (next) {
   if (this.isNew && !this.inviteLink) {
-    this.inviteLink = Math.random().toString(36).substring(2, 10).toLowerCase();
+    this.inviteLink = crypto.randomUUID().slice(0, 5);
   }
   next();
 });

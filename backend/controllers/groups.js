@@ -59,6 +59,27 @@ async function joinGroup(req, res) {
   }
 }
 
+async function joinGroupByInviteCode(req, res) {
+  try {
+    const { inviteCode } = req.body;
+
+    const group = await Group.findOne({ inviteLink: inviteCode.toUpperCase() });
+    if (!group) {
+      return res.status(404).json({ message: "Invalid invite code" });
+    }
+    if (!group.members.includes(req.user._id)) {
+      group.members.push(req.user._id);
+      await group.save();
+    }
+
+    await group.populate("members", "name email");
+    res.json(group);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ message: "Failed to join group" });
+  }
+}
+
 async function getGroupDetails(req, res) {
   try {
     const group = await Group.findById(req.params.id)

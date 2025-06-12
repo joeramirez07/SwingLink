@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import * as groupService from "../../services/groupService";
-import { useNavigate } from "react-router-dom"; // Importing useNavigate for potential navigation needs
+import { useNavigate } from "react-router-dom"; 
+import JoinGroupForm from "../../components/JoinGroupForm/JoinGroupForm";
+
 
 export default function GroupsPage() {
   const [groups, setGroups] = useState([]);
@@ -49,6 +51,7 @@ export default function GroupsPage() {
         <h1>My Golf Groups</h1>
         <p className="groups-subtitle">Your golf crews and upcoming rounds</p>
 
+        <JoinGroupForm onJoin={(newGroup) => setGroups([...groups, newGroup])} />
         {errorMsg && <p className="error-message">{errorMsg}</p>}
 
         {groups.length ? (

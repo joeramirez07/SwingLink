@@ -10,15 +10,14 @@ export async function createGroup(groupData) {
   return sendRequest(BASE_URL, "POST", groupData);
 }
 
-export async function joinGroup(inviteCode) {
-  return sendRequest(`${BASE_URL}/join`, "POST", { inviteCode });
+export function joinGroup(inviteCode) {
+  return sendRequest("/api/groups/join", "POST", { inviteCode });
 }
 
 export async function getGroupDetails(groupId) {
   return sendRequest(`${BASE_URL}/${groupId}`);
 }
 
-// Create outing
 export async function createOuting(groupId, outingData) {
   return sendRequest(`${BASE_URL}/${groupId}/outings`, "POST", outingData);
 }

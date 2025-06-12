@@ -29,7 +29,9 @@ export default function CreateOutingPage() {
           <textarea placeholder="Any special info..." />
         </div>
 
-        <button type="submit" className="btn-primary">Create Outing</button>
+        <button type="submit" className="btn-primary">
+          Create Outing
+        </button>
       </form>
     </div>
   );
