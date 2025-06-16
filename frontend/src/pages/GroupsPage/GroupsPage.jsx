@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import * as groupService from "../../services/groupService";
 import { useNavigate } from "react-router-dom";
+import * as groupService from "../../services/groupService";
 import JoinGroupForm from "../../components/JoinGroupForm/JoinGroupForm";
+import "./GroupsPage.css";
 
 export default function GroupsPage() {
   const [groups, setGroups] = useState([]);
@@ -16,7 +17,7 @@ export default function GroupsPage() {
         const userGroups = await groupService.getUserGroups();
         setGroups(userGroups);
       } catch (err) {
-        setErrorMsg("Failed to load golf groups");
+        setErrorMsg("Failed to load golf groups.");
       } finally {
         setLoading(false);
       }
@@ -31,9 +32,12 @@ export default function GroupsPage() {
       setGroups(updatedGroups);
       setErrorMsg("");
     } catch (err) {
-      console.error(err);
       setErrorMsg("Failed to RSVP. You may have already RSVPd.");
     }
+  }
+
+  function handleCreateGroupClick() {
+    navigate("/groups/new");
   }
 
   if (loading) {
@@ -50,9 +54,7 @@ export default function GroupsPage() {
         <h1>My Golf Groups</h1>
         <p className="groups-subtitle">Your golf crews and upcoming rounds</p>
 
-        <JoinGroupForm
-          onJoin={(newGroup) => setGroups([...groups, newGroup])}
-        />
+        <JoinGroupForm onJoin={(newGroup) => setGroups([...groups, newGroup])} />
         {errorMsg && <p className="error-message">{errorMsg}</p>}
 
         {groups.length ? (
@@ -67,13 +69,8 @@ export default function GroupsPage() {
                   <div className="outings-list">
                     {group.outings.map((outing) => (
                       <div key={outing._id} className="outing-summary">
-                        <p>
-                          <strong>{outing.courseName}</strong>
-                        </p>
-                        <p>
-                          {new Date(outing.date).toLocaleDateString()} @{" "}
-                          {outing.time}
-                        </p>
+                        <p><strong>{outing.courseName}</strong></p>
+                        <p>{new Date(outing.date).toLocaleDateString()} @ {outing.time}</p>
                         <p>{outing.notes}</p>
                         <button
                           onClick={() => handleRsvp(outing._id)}
@@ -89,22 +86,13 @@ export default function GroupsPage() {
                 <div className="group-actions">
                   <button
                     className="btn-primary"
-                    onClick={() => {
-                      console.log("View Details clicked for group:", group._id);
-                      navigate(`/groups/${group._id}`);
-                    }}
+                    onClick={() => navigate(`/groups/${group._id}`)}
                   >
                     View Details
                   </button>
                   <button
                     className="btn-secondary"
-                    onClick={() => {
-                      console.log(
-                        "Create Outing clicked for group:",
-                        group._id,
-                      );
-                      navigate(`/groups/${group._id}/outings/new`);
-                    }}
+                    onClick={() => navigate(`/groups/${group._id}/outings/new`)}
                   >
                     Create Outing
                   </button>
@@ -115,10 +103,10 @@ export default function GroupsPage() {
         ) : (
           <div className="no-groups">
             <p>No Golf Groups Yet!</p>
-            <p>
-              Create your first group or join friends using their invite code.
-            </p>
-            <button className="btn-primary">Create First Group</button>
+            <p>Create your first group or join friends using their invite code.</p>
+            <button className="btn-primary" onClick={handleCreateGroupClick}>
+              Create First Group
+            </button>
           </div>
         )}
       </div>

@@ -1,0 +1,183 @@
+.group-details-page {
+  padding: 1rem;
+  color: #1a1a1a;
+  background-color: whitesmoke;
+  background-image: url("/images/hypephoto.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 0;
+  width: 100%;
+  opacity: 99%;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.group-details-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: -1;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.group-details-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  width: 100%;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.group-details-card h1 {
+  margin: 1rem;
+  font-size: 1.8rem;
+  text-align: center;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.group-details-card p {
+  margin: 1rem 0;
+  color: #555;
+  font-size: 0.95rem;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.details-section {
+  margin-top: 7rem;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.details-section h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: #222;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.details-section ul {
+  padding-left: 1.2rem;
+}
+
+.details-section li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.outing-summary {
+  background-color: #f8f8f8;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.btn-delete-group {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.btn-delete-group:hover {
+  background-color: #a30000;
+}
+
+.btn-danger {
+  background-color: #e4d2d2;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-danger:hover {
+  background-color: #dfd5d5;
+}
+.group-footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+.group-title {
+  font-size: 56rem;
+  margin-bottom: 0.5rem;
+}
+
+.group-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.invite-code {
+  font-style: italic;
+  opacity: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.btn-delete-small {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-delete-small:hover {
+  background-color: #c0392b;
+}

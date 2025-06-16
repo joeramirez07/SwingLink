@@ -160,8 +160,20 @@ async function rsvpToOuting(req, res) {
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: "Error updating RSVP" });
+  
   }
 }
+
+
+async function deleteGroup(req, res) {
+  try {
+    const deletedGroup = await Group.findByIdAndDelete(req.params.id);
+    res.json(deletedGroup);
+  } catch (err) {
+    res.status(400).json({ message: "Failed to delete group" });
+  }
+}
+
 
 module.exports = {
   createGroup,
@@ -171,4 +183,5 @@ module.exports = {
   createOuting,
   rsvpToOuting,
   joinGroupByInviteCode,
+  deleteGroup
 };

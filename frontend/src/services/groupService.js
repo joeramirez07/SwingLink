@@ -25,3 +25,7 @@ export async function createOuting(groupId, outingData) {
 export async function rsvpToOuting(outingId) {
   return sendRequest(`/api/outings/${outingId}/rsvp`, "POST");
 }
+
+export function deleteGroup(id) {
+  return sendRequest(`${BASE_URL}/${id}`, "DELETE");
+}
