@@ -14,7 +14,7 @@ export default function NavBar({ user, setUser }) {
     <nav className="NavBar">
       <div className="nav-brand">
         <NavLink to="/" className="brand-link">
-          SwingLink
+          GolfSpot
         </NavLink>
       </div>
 
