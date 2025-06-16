@@ -160,10 +160,8 @@ async function rsvpToOuting(req, res) {
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: "Error updating RSVP" });
-  
   }
 }
-
 
 async function deleteGroup(req, res) {
   try {
@@ -174,7 +172,6 @@ async function deleteGroup(req, res) {
   }
 }
 
-
 module.exports = {
   createGroup,
   getUserGroups,
@@ -183,5 +180,5 @@ module.exports = {
   createOuting,
   rsvpToOuting,
   joinGroupByInviteCode,
-  deleteGroup
+  deleteGroup,
 };

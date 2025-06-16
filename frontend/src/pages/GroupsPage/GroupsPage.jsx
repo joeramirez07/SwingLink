@@ -54,7 +54,9 @@ export default function GroupsPage() {
         <h1>My Golf Groups</h1>
         <p className="groups-subtitle">Your golf crews and upcoming rounds</p>
 
-        <JoinGroupForm onJoin={(newGroup) => setGroups([...groups, newGroup])} />
+        <JoinGroupForm
+          onJoin={(newGroup) => setGroups([...groups, newGroup])}
+        />
         {errorMsg && <p className="error-message">{errorMsg}</p>}
 
         {groups.length ? (
@@ -69,8 +71,13 @@ export default function GroupsPage() {
                   <div className="outings-list">
                     {group.outings.map((outing) => (
                       <div key={outing._id} className="outing-summary">
-                        <p><strong>{outing.courseName}</strong></p>
-                        <p>{new Date(outing.date).toLocaleDateString()} @ {outing.time}</p>
+                        <p>
+                          <strong>{outing.courseName}</strong>
+                        </p>
+                        <p>
+                          {new Date(outing.date).toLocaleDateString()} @{" "}
+                          {outing.time}
+                        </p>
                         <p>{outing.notes}</p>
                         <button
                           onClick={() => handleRsvp(outing._id)}
@@ -103,7 +110,9 @@ export default function GroupsPage() {
         ) : (
           <div className="no-groups">
             <p>No Golf Groups Yet!</p>
-            <p>Create your first group or join friends using their invite code.</p>
+            <p>
+              Create your first group or join friends using their invite code.
+            </p>
             <button className="btn-primary" onClick={handleCreateGroupClick}>
               Create First Group
             </button>

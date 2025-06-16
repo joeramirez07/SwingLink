@@ -9,12 +9,11 @@
   position: relative;
   min-height: 100vh;
   display: flex;
- 
+
   align-items: center;
   gap: 1rem;
   z-index: 0;
   width: 100%;
-  
 }
 
 .groups-page::before {
@@ -40,7 +39,6 @@
   grid-template-columns: 1fr;
   gap: 1rem;
   width: 100%;
-  
 }
 
 .group-card {

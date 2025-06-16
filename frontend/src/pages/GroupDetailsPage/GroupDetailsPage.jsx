@@ -43,15 +43,14 @@ export default function GroupDetailsPage() {
   return (
     <div className="group-details-page">
       <div className="group-details-card">
- <h1 className="group-title">{group.teamName}</h1>
+        <h1 className="group-title">{group.teamName}</h1>
 
-<div className="group-meta">
-  <span className="invite-code">Invite Code: {group.inviteLink}</span>
-  <button onClick={handleDelete} className="btn-delete-small">
-    Delete
-  </button>
-</div>
-
+        <div className="group-meta">
+          <span className="invite-code">Invite Code: {group.inviteLink}</span>
+          <button onClick={handleDelete} className="btn-delete-small">
+            Delete
+          </button>
+        </div>
 
         <section className="details-section">
           <h2>Members</h2>
@@ -74,8 +73,10 @@ export default function GroupDetailsPage() {
             <div className="outings-list">
               {group.outings.map((outing) => (
                 <div key={outing._id} className="outing-summary">
-                  <strong>{outing.courseName}</strong><br />
-                  {new Date(outing.date).toLocaleDateString()} at {outing.time}<br />
+                  <strong>{outing.courseName}</strong>
+                  <br />
+                  {new Date(outing.date).toLocaleDateString()} at {outing.time}
+                  <br />
                   <em>Created by: {outing.createdBy?.name || "someone"}</em>
                 </div>
               ))}

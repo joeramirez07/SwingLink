@@ -2,11 +2,9 @@ import { createOuting } from "../../services/groupService"; // Adjust the import
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-
-
 export default function CreateOutingPage() {
   const { id } = useParams();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     courseName: "",
@@ -19,16 +17,15 @@ export default function CreateOutingPage() {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   }
 
-async function handleSubmit(evt) {
-  evt.preventDefault();
-  try {
-    await createOuting(id, formData); 
-    navigate(`/groups/${id}`);        
-  } catch (err) {
-    console.error("Failed to create outing:", err);
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    try {
+      await createOuting(id, formData);
+      navigate(`/groups/${id}`);
+    } catch (err) {
+      console.error("Failed to create outing:", err);
+    }
   }
-}
-
 
   return (
     <div className="container">
