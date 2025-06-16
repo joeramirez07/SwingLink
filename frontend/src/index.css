@@ -6,7 +6,7 @@
   --golf-dark: #1a1a1a;
   --golf-accent: #ff6b35;
 
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-synthesis: none;
@@ -19,7 +19,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
@@ -27,7 +28,12 @@ html, body {
   color: var(--golf-dark);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-align: center;
   color: var(--golf-green);
   font-weight: bold;
@@ -68,7 +74,9 @@ form {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   padding: 0.75rem;
   font-size: 1rem;
   border: 1px solid var(--golf-dark);
@@ -120,7 +128,8 @@ label {
 }
 
 @media (max-width: 768px) {
-  .grid-2, .grid-3 {
+  .grid-2,
+  .grid-3 {
     grid-template-columns: 1fr;
   }
 

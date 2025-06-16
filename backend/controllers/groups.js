@@ -107,11 +107,31 @@ async function createOuting(req, res) {
     if (!group) {
       return res.status(404).json({ message: "Group not found" });
     }
+
+    const newOuting = {
+      courseName: req.body.courseName,
+      date: req.body.date,
+      time: req.body.time,
+      notes: req.body.notes,
+      createdBy: req.user._id,
+      players: [
+        {
+          userId: req.user._id,
+          userName: req.user.name,
+        },
+      ],
+    };
+
+    group.outings.push(newOuting);
+    await group.save();
+
+    res.status(201).json(group.outings[group.outings.length - 1]);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(400).json({ message: "Error creating outing" });
   }
 }
+
 async function rsvpToOuting(req, res) {
   try {
     const { groupId, outingId } = req.params;
@@ -150,4 +170,5 @@ module.exports = {
   getGroupDetails,
   createOuting,
   rsvpToOuting,
+  joinGroupByInviteCode,
 };

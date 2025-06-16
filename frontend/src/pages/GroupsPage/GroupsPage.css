@@ -1,0 +1,148 @@
+.groups-page {
+  padding: 1rem;
+  color: #1a1a1a;
+  background-color: whitesmoke;
+  background-image: url("/images/hypephoto.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 0;
+}
+
+.groups-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+
+.groups-subtitle {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #444;
+}
+
+.groups-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.group-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.group-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.group-card p {
+  margin: 0.25rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.group-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--golf-accent);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #ddd;
+  color: #222;
+}
+
+.btn-primary:hover {
+  background-color: #e55b2e;
+}
+
+.btn-secondary:hover {
+  background-color: #ccc;
+}
+
+.outings-list {
+  margin-top: 1rem;
+}
+
+.outing-summary {
+  background-color: #f8f8f8;
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.btn-rsvp {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-rsvp:hover {
+  background-color: #3e8e41;
+}
+
+.no-groups {
+  text-align: center;
+  color: #555;
+  margin-top: 2rem;
+}
+
+@media (min-width: 23.438rem) {
+  .group-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .groups-list {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}

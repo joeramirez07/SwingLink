@@ -43,7 +43,19 @@ export default function GroupDetailsPage() {
 
       <section>
         <h2>Outings</h2>
-        <p>Coming soon...</p>
+        {group.outings.length === 0 ? (
+          <p>No outings yet.</p>
+        ) : (
+          <ul>
+            {group.outings.map((outing) => (
+              <li key={outing._id}>
+                <strong>{outing.courseName}</strong> on{" "}
+                {new Date(outing.date).toLocaleDateString()} at {outing.time} —
+                Created by {outing.createdBy?.name || "someone"}
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </div>
   );
