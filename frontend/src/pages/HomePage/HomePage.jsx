@@ -3,7 +3,7 @@ import "./HomePage.css";
 
 export default function HomePage({ user }) {
   const navigate = useNavigate();
-  
+
   if (user) {
     return (
       <main className="dashboard" aria-label="User dashboard">
@@ -12,7 +12,7 @@ export default function HomePage({ user }) {
             <h2>Time to Hit the Links, {user.name}! 🏌️‍♂️</h2>
             <p className="dashboard-subtitle">Let's Tee Off:</p>
           </header>
-          
+
           <nav className="dashboard-nav" aria-label="Main navigation">
             <div className="nav-cards">
               <Link to="/groups" className="nav-card">
@@ -37,7 +37,9 @@ export default function HomePage({ user }) {
       <div className="homepage-content">
         <section className="hero" aria-labelledby="hero-heading">
           <div className="hero-container">
-            <h1 id="hero-heading" className="hero-title">GolfSpot</h1>
+            <h1 id="hero-heading" className="hero-title">
+              GolfSpot
+            </h1>
             <h2 className="hero-subtitle">
               Organize Golf Outings with Your Friends the Easy Way
             </h2>
@@ -45,13 +47,16 @@ export default function HomePage({ user }) {
               No more "Who's playing Sunday?" texts. GolfSpot makes golf
               coordination simple.
             </p>
-            <p className="hero-note">``
-              Join in 30 seconds. No credit card required.
+            <p className="hero-note">
+              `` Join in 30 seconds. No credit card required.
             </p>
           </div>
         </section>
 
-        <section className="problem-solution" aria-labelledby="problems-heading">
+        <section
+          className="problem-solution"
+          aria-labelledby="problems-heading"
+        >
           <div className="section-container">
             <h3 id="problems-heading">Tired of Golf Planning Headaches?</h3>
             <div className="problem-grid">
@@ -80,7 +85,9 @@ export default function HomePage({ user }) {
         <section className="cta" aria-labelledby="cta-heading">
           <div className="cta-container">
             <h3 id="cta-heading">Ready to Simplify Your Golf Plans?</h3>
-            <p className="cta-description">Get your group started in 2 minutes</p>
+            <p className="cta-description">
+              Get your group started in 2 minutes
+            </p>
             <button
               className="btn-primary btn-large"
               onClick={() => navigate("/signup")}

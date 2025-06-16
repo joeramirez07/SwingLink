@@ -24,11 +24,11 @@ export default function LogInPage({ setUser }) {
       navigate("/groups");
     } catch (err) {
       // Handle specific error types
-      if (err.message.includes('email')) {
+      if (err.message.includes("email")) {
         setErrorMsg("Email not found");
-      } else if (err.message.includes('password')) {
+      } else if (err.message.includes("password")) {
         setErrorMsg("Incorrect password");
-      } else if (err.message.includes('credentials')) {
+      } else if (err.message.includes("credentials")) {
         setErrorMsg("Invalid email or password");
       } else {
         setErrorMsg("Login failed. Please try again");
@@ -51,12 +51,14 @@ export default function LogInPage({ setUser }) {
         <div className="login-card">
           <header className="card-header">
             <h1 className="login-title">Welcome Back!</h1>
-            <p className="login-subtitle">Sign in to coordinate your next round</p>
+            <p className="login-subtitle">
+              Sign in to coordinate your next round
+            </p>
           </header>
 
-          <form 
-            autoComplete="on" 
-            onSubmit={handleSubmit} 
+          <form
+            autoComplete="on"
+            onSubmit={handleSubmit}
             className="login-form"
             noValidate
           >
@@ -90,8 +92,8 @@ export default function LogInPage({ setUser }) {
               />
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={!isFormValid || isLoading}
               className="btn-primary btn-login"
               aria-describedby={errorMsg ? "error-msg" : undefined}
@@ -108,7 +110,12 @@ export default function LogInPage({ setUser }) {
           </form>
 
           {errorMsg && (
-            <div id="error-msg" className="error-message" role="alert" aria-live="polite">
+            <div
+              id="error-msg"
+              className="error-message"
+              role="alert"
+              aria-live="polite"
+            >
               {errorMsg}
             </div>
           )}

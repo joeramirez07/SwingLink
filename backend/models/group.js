@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const crypto = require("crypto");
 
 const playerSchema = new Schema(
   {
@@ -34,9 +33,30 @@ const groupSchema = new Schema(
   { timestamps: true },
 );
 
-groupSchema.pre("save", function (next) {
+// Generate a more readable invite code
+function generateInviteCode() {
+  const chars = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789"; // Removed O, 0 for clarity
+  let result = "";
+  for (let i = 0; i < 5; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+groupSchema.pre("save", async function (next) {
   if (this.isNew && !this.inviteLink) {
-    this.inviteLink = crypto.randomUUID().slice(0, 5);
+    let inviteCode;
+    let existing;
+
+    // Ensure uniqueness
+    do {
+      inviteCode = generateInviteCode();
+      existing = await mongoose
+        .model("Group")
+        .findOne({ inviteLink: inviteCode });
+    } while (existing);
+
+    this.inviteLink = inviteCode;
   }
   next();
 });

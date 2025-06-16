@@ -1,7 +1,6 @@
-
 .login-page {
   min-height: 100vh;
-  
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,13 +51,18 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #4CAF50, #81C784, #4CAF50);
+  background: linear-gradient(90deg, #4caf50, #81c784, #4caf50);
   animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Card header */
@@ -81,7 +85,6 @@
   margin: 0;
   line-height: 1.5;
 }
-
 
 .login-form {
   margin-bottom: 1.5rem;
@@ -118,7 +121,7 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #4CAF50;
+  border-color: #4caf50;
   box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
   background: rgba(255, 255, 255, 0.95);
 }
@@ -175,8 +178,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Error message */
@@ -209,7 +216,7 @@
 
 .signup-link a,
 .forgot-link a {
-  color: #4CAF50;
+  color: #4caf50;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
@@ -226,20 +233,20 @@
   .login-page {
     padding: 1rem;
   }
-  
+
   .login-card {
     padding: 2rem 1.5rem;
   }
-  
+
   .login-title {
     font-size: 1.75rem;
   }
-  
+
   .form-group input {
     padding: 1rem;
     font-size: 1rem;
   }
-  
+
   .btn-primary {
     padding: 1.125rem;
     font-size: 1rem;
@@ -251,16 +258,16 @@
   .login-page {
     padding: 0.75rem;
   }
-  
+
   .login-card {
     padding: 1.5rem 1rem;
     border-radius: 20px;
   }
-  
+
   .login-title {
     font-size: 1.5rem;
   }
-  
+
   .login-subtitle {
     font-size: 0.9rem;
   }
@@ -272,12 +279,12 @@
     background: rgba(255, 255, 255, 0.95);
     border: 2px solid #333;
   }
-  
+
   .form-group input {
     background: white;
     border: 2px solid #333;
   }
-  
+
   .btn-primary {
     background: #2e7d32;
     border: 2px solid #1b5e20;
@@ -289,15 +296,15 @@
   .login-card::before {
     animation: none;
   }
-  
+
   .loading-spinner {
     animation: none;
   }
-  
+
   .btn-primary {
     transition: none;
   }
-  
+
   .form-group input {
     transition: none;
   }

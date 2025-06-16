@@ -1,7 +1,6 @@
-
 .homepage {
   min-height: 100vh;
-  background-image: url("/images/course.jpg");
+  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -35,7 +34,6 @@
   justify-content: center;
 }
 
-
 .hero {
   width: 100%;
   max-width: 800px;
@@ -60,13 +58,18 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #4CAF50, #81C784, #4CAF50);
+  background: linear-gradient(90deg, #4caf50, #81c784, #4caf50);
   animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .hero-title {
@@ -99,7 +102,6 @@
   font-style: italic;
   margin: 0;
 }
-
 
 .problem-solution {
   width: 100%;
@@ -168,7 +170,7 @@
 
 .arrow {
   font-size: 1.5rem;
-  color: #4CAF50;
+  color: #4caf50;
   font-weight: bold;
 }
 
@@ -247,10 +249,10 @@
   font-style: italic;
 }
 
-/* Dashboard styles for logged-in users */
+
 .dashboard {
   min-height: 100vh;
-  background-image: url("/images/course.jpg");
+  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -359,25 +361,25 @@
   .homepage-content {
     padding: 3rem;
   }
-  
+
   .hero-title {
     font-size: 4rem;
   }
-  
+
   .hero-subtitle {
     font-size: 2.2rem;
   }
-  
+
   .problem-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .problem-card {
     flex-direction: column;
     min-height: 200px;
     justify-content: center;
   }
-  
+
   .nav-cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -388,52 +390,52 @@
     padding: 1rem;
     gap: 2rem;
   }
-  
+
   .hero-container,
   .section-container,
   .cta-container {
     padding: 2rem 1.5rem;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.5rem;
   }
-  
+
   .section-container h3,
   .cta-container h3 {
     font-size: 1.6rem;
   }
-  
+
   .problem-card {
     flex-direction: row;
     text-align: left;
     align-items: center;
     gap: 0.75rem;
   }
-  
+
   .problem-icon {
     font-size: 1.5rem;
     margin: 0;
     flex-shrink: 0;
   }
-  
+
   .arrow {
     font-size: 1.2rem;
     flex-shrink: 0;
   }
-  
+
   .dashboard-content {
     padding: 1rem;
   }
-  
+
   .dashboard-header {
     padding: 1.5rem;
   }
-  
+
   .dashboard-header h2 {
     font-size: 1.8rem;
   }
@@ -443,20 +445,20 @@
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.3rem;
   }
-  
+
   .hero-description {
     font-size: 1rem;
   }
-  
+
   .btn-large {
     padding: 1rem 1.5rem;
     font-size: 1rem;
   }
-  
+
   .problem-card {
     flex-direction: column;
     text-align: center;

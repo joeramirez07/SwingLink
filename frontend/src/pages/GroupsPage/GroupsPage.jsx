@@ -4,7 +4,7 @@ import * as groupService from "../../services/groupService";
 import JoinGroupForm from "../../components/JoinGroupForm/JoinGroupForm";
 import "./GroupsPage.css";
 
-export default function GroupsPage() {
+export default function GroupsPage({ user }) {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
@@ -39,6 +39,23 @@ export default function GroupsPage() {
       .sort((a, b) => new Date(a.date) - new Date(b.date));
     
     return upcomingOutings[0] || null;
+  }
+
+  // Helper function to get RSVP status and count
+  function getRsvpInfo(outing, userId) {
+    if (!outing || !outing.players) {
+      return { userRsvpd: false, goingCount: 0 };
+    }
+    
+    const goingPlayers = outing.players.filter(player => !player.cancelled);
+    const userRsvpd = goingPlayers.some(player => 
+      player.userId === userId || player.userId._id === userId
+    );
+    
+    return {
+      userRsvpd,
+      goingCount: goingPlayers.length
+    };
   }
 
   if (loading) {
@@ -78,6 +95,7 @@ export default function GroupsPage() {
             <div className="groups-grid">
               {groups.map((group) => {
                 const nextOuting = getNextOuting(group.outings);
+                const rsvpInfo = nextOuting ? getRsvpInfo(nextOuting, user?._id) : null;
                 
                 return (
                   <article key={group._id} className="group-card">
@@ -103,6 +121,23 @@ export default function GroupsPage() {
                               day: 'numeric'
                             })} at {nextOuting.time}
                           </p>
+                          
+                          {rsvpInfo && (
+                            <div className="rsvp-status">
+                              {rsvpInfo.userRsvpd ? (
+                                <span className="user-going">
+                                  ✓ You're going!
+                                </span>
+                              ) : (
+                                <span className="user-not-going">
+                                  ⏳ RSVP needed
+                                </span>
+                              )}
+                              <span className="going-count">
+                                {rsvpInfo.goingCount} {rsvpInfo.goingCount === 1 ? 'player' : 'players'} going
+                              </span>
+                            </div>
+                          )}
                         </div>
                       ) : (
                         <div className="no-rounds">

@@ -3,10 +3,27 @@ const User = require("../models/user");
 
 async function createGroup(req, res) {
   try {
+    function generateInviteCode() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let result = "";
+      for (let i = 0; i < 5; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return result;
+    }
+
+    let inviteLink;
+    let existingGroup;
+    do {
+      inviteLink = generateInviteCode();
+      existingGroup = await Group.findOne({ inviteLink });
+    } while (existingGroup);
+
     const group = await Group.create({
       teamName: req.body.teamName,
       creator: req.user._id,
       members: [req.user._id],
+      inviteLink: inviteLink,
     });
 
     await group.populate("members", "name email");
@@ -63,20 +80,36 @@ async function joinGroupByInviteCode(req, res) {
   try {
     const { inviteCode } = req.body;
 
-    const group = await Group.findOne({ inviteLink: inviteCode.toUpperCase() });
+    if (!inviteCode || !inviteCode.trim()) {
+      return res.status(400).json({ message: "Invite code is required" });
+    }
+
+    const cleanCode = inviteCode.trim();
+
+    const group = await Group.findOne({
+      $or: [
+        { inviteLink: cleanCode },
+        { inviteLink: cleanCode.toUpperCase() },
+        { inviteLink: cleanCode.toLowerCase() },
+      ],
+    });
+
     if (!group) {
       return res.status(404).json({ message: "Invalid invite code" });
     }
-    if (!group.members.includes(req.user._id)) {
-      group.members.push(req.user._id);
-      await group.save();
+
+    if (group.members.includes(req.user._id)) {
+      return res.status(400).json({ message: "User already member" });
     }
+
+    group.members.push(req.user._id);
+    await group.save();
 
     await group.populate("members", "name email");
     res.json(group);
   } catch (err) {
-    console.error(err);
-    res.status(400).json({ message: "Failed to join group" });
+    console.error("Join group error:", err);
+    res.status(500).json({ message: "Failed to join group" });
   }
 }
 
@@ -135,31 +168,50 @@ async function createOuting(req, res) {
 async function rsvpToOuting(req, res) {
   try {
     const { groupId, outingId } = req.params;
-    const { rsvpStatus } = req.body;
 
     const group = await Group.findById(groupId);
     if (!group) {
       return res.status(404).json({ message: "Group not found" });
     }
+
+    if (!group.members.includes(req.user._id)) {
+      return res
+        .status(403)
+        .json({ message: "You must be a group member to RSVP" });
+    }
+
     const outing = group.outings.id(outingId);
     if (!outing) {
       return res.status(404).json({ message: "Outing not found" });
     }
 
-    const playerRsvp = outing.players.find((player) =>
+    let playerRsvp = outing.players.find((player) =>
       player.userId.equals(req.user._id),
     );
 
     if (playerRsvp) {
-      playerRsvp.rsvpStatus = rsvpStatus;
-      await group.save();
-      res.json({ message: "RSVP updated successfully", outing });
+      playerRsvp.cancelled = false;
     } else {
-      res.status(404).json({ message: "You are not invited to this outing" });
+      outing.players.push({
+        userId: req.user._id,
+        userName: req.user.name,
+        cancelled: false,
+      });
     }
+
+    await group.save();
+
+    // Return the updated outing with populated data
+    await group.populate("outings.players.userId", "name email");
+    const updatedOuting = group.outings.id(outingId);
+
+    res.json({
+      message: "RSVP successful! You're going to this outing.",
+      outing: updatedOuting,
+    });
   } catch (err) {
-    console.log(err);
-    res.status(400).json({ message: "Error updating RSVP" });
+    console.error("RSVP error:", err);
+    res.status(500).json({ message: "Error updating RSVP" });
   }
 }
 

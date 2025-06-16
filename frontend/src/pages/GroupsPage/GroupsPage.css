@@ -1,7 +1,7 @@
-
+/* Main page container */
 .groups-page {
   min-height: 100vh;
-  background-image: url("/images/hypephoto.avif");
+  background-color: #fbfffb;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,29 +43,12 @@
   color: #1a1a1a;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(1px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  
 }
 
 .groups-subtitle {
   font-size: 1.1rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(1px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
+  color: #555;
+  font-weight: 400;
 }
 
 
@@ -122,6 +105,7 @@
   gap: 1.5rem;
 }
 
+
 .group-card {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(16px);
@@ -157,7 +141,7 @@
   opacity: 1;
 }
 
-/* Card header */
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -199,7 +183,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Card content */
+
 .card-content {
   margin-bottom: 1.5rem;
 }
@@ -230,7 +214,44 @@
 .round-date {
   font-size: 0.95rem;
   color: #555;
-  margin: 0;
+  margin: 0 0 1rem 0;
+}
+
+.rsvp-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-going {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2e7d32;
+  background: rgba(76, 175, 80, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.user-not-going {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f57c00;
+  background: rgba(255, 152, 0, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.going-count {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+  font-style: italic;
 }
 
 .no-rounds {
@@ -255,7 +276,7 @@
   font-style: italic;
 }
 
-/* Card actions */
+
 .card-actions {
   display: flex;
   gap: 0.75rem;

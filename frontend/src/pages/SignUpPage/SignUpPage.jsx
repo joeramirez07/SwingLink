@@ -28,7 +28,7 @@ export default function SignUpPage({ setUser }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    
+
     // Basic validation
     if (!validatePhone(formData.phoneNumber)) {
       setErrorMsg("Please enter a valid phone number");
@@ -44,11 +44,11 @@ export default function SignUpPage({ setUser }) {
       navigate("/groups");
     } catch (err) {
       // Handle specific error types
-      if (err.message.includes('email')) {
+      if (err.message.includes("email")) {
         setErrorMsg("Email already exists");
-      } else if (err.message.includes('phone')) {
+      } else if (err.message.includes("phone")) {
         setErrorMsg("Phone number already registered");
-      } else if (err.message.includes('password')) {
+      } else if (err.message.includes("password")) {
         setErrorMsg("Password requirements not met");
       } else {
         setErrorMsg("Registration failed. Please try again");
@@ -143,9 +143,9 @@ export default function SignUpPage({ setUser }) {
             )}
           </div>
 
-          <button 
-            type="submit" 
-            disabled={isFormInvalid} 
+          <button
+            type="submit"
+            disabled={isFormInvalid}
             className="btn-primary"
             aria-describedby={errorMsg ? "error-msg" : undefined}
           >
