@@ -25,100 +25,137 @@ export default function GroupsPage() {
     fetchGroups();
   }, []);
 
-  async function handleRsvp(outingId) {
-    try {
-      await groupService.rsvpToOuting(outingId);
-      const updatedGroups = await groupService.getUserGroups();
-      setGroups(updatedGroups);
-      setErrorMsg("");
-    } catch (err) {
-      setErrorMsg("Failed to RSVP. You may have already RSVPd.");
-    }
-  }
-
   function handleCreateGroupClick() {
     navigate("/groups/new");
+  }
+
+  // Helper function to get next upcoming outing
+  function getNextOuting(outings) {
+    if (!outings || outings.length === 0) return null;
+    
+    const now = new Date();
+    const upcomingOutings = outings
+      .filter(outing => new Date(outing.date) >= now)
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+    
+    return upcomingOutings[0] || null;
   }
 
   if (loading) {
     return (
       <div className="container">
-        <p>Loading your golf groups...</p>
+        <div className="loading-state">
+          <div className="loading-spinner"></div>
+          <p>Loading your golf groups...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="container">
-      <div className="groups-page">
-        <h1>My Golf Groups</h1>
-        <p className="groups-subtitle">Your golf crews and upcoming rounds</p>
+    <main className="groups-page" aria-label="Golf groups dashboard">
+      <div className="groups-content">
+        <header className="page-header">
+          <h1 id="groups-heading">My Golf Groups</h1>
+          <p className="groups-subtitle">Your golf crews and upcoming rounds</p>
+        </header>
 
-        <JoinGroupForm
-          onJoin={(newGroup) => setGroups([...groups, newGroup])}
-        />
-        {errorMsg && <p className="error-message">{errorMsg}</p>}
+        <section className="join-section" aria-labelledby="join-heading">
+          <h2 id="join-heading" className="visually-hidden">Join a group</h2>
+          <JoinGroupForm
+            onJoin={(newGroup) => setGroups([...groups, newGroup])}
+          />
+        </section>
 
-        {groups.length ? (
-          <div className="groups-list">
-            {groups.map((group) => (
-              <div key={group._id} className="group-card">
-                <h3>{group.teamName}</h3>
-                <p>{group.members.length} members</p>
-                <p>{group.outings.length} outings scheduled</p>
-
-                {group.outings.length > 0 && (
-                  <div className="outings-list">
-                    {group.outings.map((outing) => (
-                      <div key={outing._id} className="outing-summary">
-                        <p>
-                          <strong>{outing.courseName}</strong>
-                        </p>
-                        <p>
-                          {new Date(outing.date).toLocaleDateString()} @{" "}
-                          {outing.time}
-                        </p>
-                        <p>{outing.notes}</p>
-                        <button
-                          onClick={() => handleRsvp(outing._id)}
-                          className="btn-rsvp"
-                        >
-                          RSVP
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <div className="group-actions">
-                  <button
-                    className="btn-primary"
-                    onClick={() => navigate(`/groups/${group._id}`)}
-                  >
-                    View Details
-                  </button>
-                  <button
-                    className="btn-secondary"
-                    onClick={() => navigate(`/groups/${group._id}/outings/new`)}
-                  >
-                    Create Outing
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="no-groups">
-            <p>No Golf Groups Yet!</p>
-            <p>
-              Create your first group or join friends using their invite code.
-            </p>
-            <button className="btn-primary" onClick={handleCreateGroupClick}>
-              Create First Group
-            </button>
+        {errorMsg && (
+          <div className="error-message" role="alert" aria-live="polite">
+            {errorMsg}
           </div>
         )}
+
+        {groups.length ? (
+          <section className="groups-section" aria-labelledby="groups-heading">
+            <div className="groups-grid">
+              {groups.map((group) => {
+                const nextOuting = getNextOuting(group.outings);
+                
+                return (
+                  <article key={group._id} className="group-card">
+                    <div className="card-header">
+                      <h3>{group.teamName}</h3>
+                      <div className="member-count">
+                        <span className="count">{group.members.length}</span>
+                        <span className="label">members</span>
+                      </div>
+                    </div>
+
+                    <div className="card-content">
+                      {nextOuting ? (
+                        <div className="next-round">
+                          <span className="next-label">Next round:</span>
+                          <p className="round-info">
+                            <strong>{nextOuting.courseName}</strong>
+                          </p>
+                          <p className="round-date">
+                            {new Date(nextOuting.date).toLocaleDateString('en-US', {
+                              weekday: 'short',
+                              month: 'short',
+                              day: 'numeric'
+                            })} at {nextOuting.time}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="no-rounds">
+                          <span className="no-rounds-text">No upcoming rounds</span>
+                          <p className="suggestion">Create your first outing!</p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="card-actions">
+                      <button
+                        className="btn-primary"
+                        onClick={() => navigate(`/groups/${group._id}`)}
+                        aria-label={`View details for ${group.teamName}`}
+                      >
+                        View Details
+                      </button>
+                      <button
+                        className="btn-secondary"
+                        onClick={() => navigate(`/groups/${group._id}/outings/new`)}
+                        aria-label={`Create new outing for ${group.teamName}`}
+                      >
+                        Create Outing
+                      </button>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        ) : (
+          <section className="empty-state" aria-labelledby="empty-heading">
+            <div className="empty-content">
+              <div className="golf-icon">🏌️‍♂️</div>
+              <h2 id="empty-heading">Ready to Tee Off?</h2>
+              <p>Create your first golf group and start organizing amazing rounds with friends!</p>
+              
+              <div className="cta-section">
+                <button 
+                  className="btn-primary btn-large" 
+                  onClick={handleCreateGroupClick}
+                  aria-describedby="create-group-desc"
+                >
+                  Create Your First Group
+                </button>
+                <p id="create-group-desc" className="cta-description">
+                  Start building your golf community today
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
       </div>
-    </div>
+    </main>
   );
 }
