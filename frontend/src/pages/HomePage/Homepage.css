@@ -1,22 +1,51 @@
-.homepage {
-  min-height: 100vh;
+:root {
+  --white: #ffffff;
+  --black: #1a1a1a;
+  --gray-light: #666;
+  --gray-medium: #555;
+  --gray-dark: #444;
   
+  --golf-green: #4caf50;
+  --golf-green-light: #81c784;
+  --golf-green-dark: #2d5016;
+  --golf-green-hover: #45a049;
+  
+  --danger: #dc3545;
+  --success: #2e7d32;
+  
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-hover: rgba(255, 255, 255, 0.35);
+  
+  --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 12px 40px rgba(0, 0, 0, 0.1);
+  --shadow-heavy: 0 16px 48px rgba(0, 0, 0, 0.15);
+  
+  --border-radius: 16px;
+  --border-radius-large: 20px;
+  --border-radius-xl: 24px;
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.homepage,
+.dashboard {
+  min-height: 100vh;
+  background-color: var(--white);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
-  color: #1a1a1a;
+  color: var(--black);
   width: 100%;
 }
 
-.homepage::before {
+.homepage::before,
+.dashboard::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(1px);
   z-index: 0;
@@ -28,10 +57,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 2rem;
   gap: 3rem;
   min-height: 100vh;
+}
+
+.dashboard {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  padding: 2rem;
+}
+
+.dashboard-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 800px;
 }
 
 .hero {
@@ -39,14 +82,22 @@
   max-width: 800px;
 }
 
-.hero-container {
-  background: rgba(255, 255, 255, 0.25);
+.hero-container,
+.section-container,
+.cta-container,
+.dashboard-header {
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-large);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-medium);
+}
+
+.hero-container {
+  border-radius: var(--border-radius-xl);
   padding: 3rem 2rem;
   text-align: center;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -58,25 +109,20 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #4caf50, #81c784, #4caf50);
+  background: linear-gradient(90deg, var(--golf-green), var(--golf-green-light), var(--golf-green));
   animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-  0%,
-  100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 .hero-title {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: #2d5016;
+  color: var(--golf-green-dark);
   text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
   letter-spacing: -1px;
 }
@@ -85,20 +131,20 @@
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #1a1a1a;
+  color: var(--black);
   line-height: 1.3;
 }
 
 .hero-description {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #444;
+  color: var(--gray-dark);
   line-height: 1.6;
 }
 
 .hero-note {
   font-size: 1rem;
-  color: #666;
+  color: var(--gray-light);
   font-style: italic;
   margin: 0;
 }
@@ -108,21 +154,13 @@
   max-width: 900px;
 }
 
-.section-container {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-}
-
-.section-container h3 {
+.section-container h3,
+.cta-container h3 {
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  color: #1a1a1a;
+  color: var(--black);
 }
 
 .problem-grid {
@@ -135,10 +173,10 @@
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   padding: 1.5rem;
   text-align: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--transition);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
@@ -159,7 +197,7 @@
 
 .problem-before {
   font-size: 1rem;
-  color: #dc3545;
+  color: var(--danger);
   font-weight: 500;
   background: rgba(220, 53, 69, 0.1);
   backdrop-filter: blur(8px);
@@ -170,13 +208,13 @@
 
 .arrow {
   font-size: 1.5rem;
-  color: #4caf50;
+  color: var(--golf-green);
   font-weight: bold;
 }
 
 .problem-after {
   font-size: 1rem;
-  color: #2e7d32;
+  color: var(--success);
   font-weight: 600;
   background: rgba(76, 175, 80, 0.1);
   backdrop-filter: blur(8px);
@@ -185,32 +223,18 @@
   border: 1px solid rgba(76, 175, 80, 0.2);
 }
 
-/* CTA section */
 .cta {
   width: 100%;
   max-width: 600px;
 }
 
 .cta-container {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
   text-align: center;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-}
-
-.cta-container h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
 }
 
 .cta-description {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--gray-medium);
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -222,9 +246,9 @@
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 16px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(76, 175, 80, 0.3);
   box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
@@ -244,67 +268,27 @@
 
 .signup-note {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--gray-light);
   margin: 1.5rem 0 0 0;
   font-style: italic;
 }
 
-
-.dashboard {
-  min-height: 100vh;
-  
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.dashboard::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(1px);
-  z-index: 0;
-}
-
-.dashboard-content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 800px;
-}
-
 .dashboard-header {
   text-align: center;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-header h2 {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #2d5016;
+  color: var(--golf-green-dark);
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .dashboard-subtitle {
   font-size: 1.2rem;
-  color: #444;
+  color: var(--gray-dark);
   margin: 0;
 }
 
@@ -316,24 +300,24 @@
 
 .nav-card {
   display: block;
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
   padding: 2rem;
   text-decoration: none;
-  color: #1a1a1a;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  color: var(--black);
+  transition: var(--transition);
+  box-shadow: var(--shadow-light);
   text-align: center;
 }
 
 .nav-card:hover {
   transform: translateY(-6px);
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  background: var(--glass-hover);
+  box-shadow: var(--shadow-heavy);
   text-decoration: none;
-  color: #1a1a1a;
+  color: var(--black);
 }
 
 .nav-icon {
@@ -346,16 +330,15 @@
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #2d5016;
+  color: var(--golf-green-dark);
 }
 
 .nav-card p {
   font-size: 1rem;
-  color: #555;
+  color: var(--gray-medium);
   margin: 0;
   line-height: 1.5;
 }
-
 
 @media (min-width: 768px) {
   .homepage-content {

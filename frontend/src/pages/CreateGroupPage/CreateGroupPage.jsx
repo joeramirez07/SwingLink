@@ -39,7 +39,7 @@ export default function CreateGroupPage() {
             Create Golf Group
           </button>
         </form>
-        <p className="error-message">&nbsp;{errorMsg}</p>
+        {errorMsg && <p className="error-message">{errorMsg}</p>}
       </div>
     </div>
   );
