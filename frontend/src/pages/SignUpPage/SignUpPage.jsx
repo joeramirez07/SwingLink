@@ -15,7 +15,6 @@ export default function SignUpPage({ setUser }) {
 
   const navigate = useNavigate();
 
-  // Phone number validation
   const validatePhone = (phone) => {
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     return phoneRegex.test(phone);
@@ -29,7 +28,7 @@ export default function SignUpPage({ setUser }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
 
-    // Basic validation
+  
     if (!validatePhone(formData.phoneNumber)) {
       setErrorMsg("Please enter a valid phone number");
       return;
@@ -43,7 +42,7 @@ export default function SignUpPage({ setUser }) {
       setUser(user);
       navigate("/groups");
     } catch (err) {
-      // Handle specific error types
+ 
       if (err.message.includes("email")) {
         setErrorMsg("Email already exists");
       } else if (err.message.includes("phone")) {

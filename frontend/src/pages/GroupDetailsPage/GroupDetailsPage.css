@@ -1,4 +1,4 @@
-/* Main page layout */
+
 .group-details-page {
   min-height: 100vh;
   background-image: url("/images/hypephoto.avif");
@@ -26,7 +26,7 @@
   z-index: 0;
 }
 
-/* Content wrapper */
+
 .group-details-content {
   position: relative;
   z-index: 1;
@@ -38,7 +38,7 @@
   gap: 2rem;
 }
 
-/* Loading and error states */
+
 .loading-state,
 .error-state {
   display: flex;
@@ -74,7 +74,7 @@
   }
 }
 
-/* Header section */
+
 .group-header {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(16px);
@@ -162,7 +162,7 @@
   gap: 0.75rem;
 }
 
-/* Button styles */
+
 .btn-primary,
 .btn-secondary,
 .btn-danger,
@@ -251,7 +251,7 @@ button:disabled {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Error message */
+
 .error-message {
   background: rgba(220, 53, 69, 0.1);
   backdrop-filter: blur(10px);
@@ -263,7 +263,6 @@ button:disabled {
   font-weight: 500;
 }
 
-/* Invite section */
 .invite-section {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(16px);
@@ -307,7 +306,7 @@ button:disabled {
   font-weight: 600;
 }
 
-/* Main content sections layout */
+
 .main-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -356,7 +355,7 @@ button:disabled {
   gap: 2rem;
 }
 
-/* Members section */
+
 .members-section,
 .outings-section {
   background: rgba(255, 255, 255, 0.2);
@@ -422,7 +421,7 @@ button:disabled {
   margin: 0;
 }
 
-/* Outings list */
+
 .outings-list {
   display: flex;
   flex-direction: column;
@@ -527,7 +526,7 @@ button:disabled {
   border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
-/* Empty states */
+
 .empty-state {
   text-align: center;
   padding: 3rem 2rem;
@@ -539,7 +538,7 @@ button:disabled {
   margin-bottom: 1.5rem;
 }
 
-/* Accessibility */
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -552,7 +551,7 @@ button:disabled {
   border: 0;
 }
 
-/* Responsive design */
+
 @media (max-width: 1024px) {
   .main-content {
     grid-template-columns: 1fr;

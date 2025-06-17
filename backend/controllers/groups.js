@@ -201,7 +201,7 @@ async function rsvpToOuting(req, res) {
 
     await group.save();
 
-    // Return the updated outing with populated data
+    
     await group.populate("outings.players.userId", "name email");
     const updatedOuting = group.outings.id(outingId);
 

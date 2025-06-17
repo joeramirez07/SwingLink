@@ -10,7 +10,7 @@ export default function HomePage({ user }) {
         <div className="dashboard-content">
           <header className="dashboard-header">
             <h2>Time to Hit the Links, {user.name}! 🏌️‍♂️</h2>
-            <p className="dashboard-subtitle">Let's Tee Off:</p>
+            <p className="dashboard-subtitle">Let's Tee Off</p>
           </header>
 
           <nav className="dashboard-nav" aria-label="Main navigation">

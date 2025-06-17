@@ -24,7 +24,7 @@
   z-index: 0;
 }
 
-/* Content wrapper */
+
 .login-content {
   position: relative;
   z-index: 1;
@@ -65,7 +65,7 @@
   }
 }
 
-/* Card header */
+
 .card-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -131,7 +131,7 @@
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
 }
 
-/* Login button */
+
 .btn-primary {
   width: 100%;
   padding: 1rem;
@@ -167,7 +167,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Loading spinner */
+
 .loading-spinner {
   width: 16px;
   height: 16px;
@@ -186,7 +186,7 @@
   }
 }
 
-/* Error message */
+
 .error-message {
   background: rgba(220, 53, 69, 0.1);
   backdrop-filter: blur(10px);
@@ -200,7 +200,7 @@
   font-size: 0.9rem;
 }
 
-/* Card footer */
+
 .card-footer {
   text-align: center;
   padding-top: 1.5rem;
@@ -228,7 +228,7 @@
   text-decoration: underline;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   .login-page {
     padding: 1rem;
@@ -273,7 +273,7 @@
   }
 }
 
-/* High contrast mode support */
+
 @media (prefers-contrast: high) {
   .login-card {
     background: rgba(255, 255, 255, 0.95);
@@ -291,7 +291,7 @@
   }
 }
 
-/* Reduced motion support */
+
 @media (prefers-reduced-motion: reduce) {
   .login-card::before {
     animation: none;

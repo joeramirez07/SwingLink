@@ -320,7 +320,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Empty state */
+
 .empty-state {
   display: flex;
   justify-content: center;
@@ -377,7 +377,7 @@
   font-style: italic;
 }
 
-/* Accessibility */
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -390,7 +390,7 @@
   border: 0;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   .groups-content {
     padding: 1rem;

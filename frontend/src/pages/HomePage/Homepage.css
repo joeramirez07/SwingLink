@@ -356,7 +356,7 @@
   line-height: 1.5;
 }
 
-/* Responsive design */
+
 @media (min-width: 768px) {
   .homepage-content {
     padding: 3rem;

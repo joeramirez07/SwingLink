@@ -74,11 +74,11 @@ export default function GroupDetailsPage() {
     navigator.clipboard
       .writeText(group.inviteLink)
       .then(() => {
-        // You could add a toast notification here
+       
         alert("Invite code copied to clipboard!");
       })
       .catch(() => {
-        // Fallback for older browsers
+       
         setErrorMsg(
           "Could not copy invite code. Please copy manually: " +
             group.inviteLink,
@@ -86,12 +86,11 @@ export default function GroupDetailsPage() {
       });
   }
 
-  // Helper function to check if outing is in the past
   function isOutingPast(outingDate) {
     return new Date(outingDate) < new Date();
   }
 
-  // Helper function to get upcoming outings
+  
   function getUpcomingOutings() {
     if (!group?.outings) return [];
     return group.outings
@@ -99,7 +98,7 @@ export default function GroupDetailsPage() {
       .sort((a, b) => new Date(a.date) - new Date(b.date));
   }
 
-  // Helper function to get past outings
+
   function getPastOutings() {
     if (!group?.outings) return [];
     return group.outings
@@ -138,7 +137,7 @@ export default function GroupDetailsPage() {
   return (
     <main className="group-details-page" aria-labelledby="group-title">
       <div className="group-details-content">
-        {/* Header Section */}
+      
         <header className="group-header">
           <div className="header-content">
             <h1 id="group-title" className="group-title">
@@ -175,14 +174,14 @@ export default function GroupDetailsPage() {
           </div>
         </header>
 
-        {/* Error Message */}
+       
         {errorMsg && (
           <div className="error-message" role="alert" aria-live="polite">
             {errorMsg}
           </div>
         )}
 
-        {/* Invite Code Section */}
+       
         <section className="invite-section" aria-labelledby="invite-heading">
           <h2 id="invite-heading" className="visually-hidden">
             Group Invite
@@ -202,11 +201,11 @@ export default function GroupDetailsPage() {
           </div>
         </section>
 
-        {/* Main Content - Two Column Layout */}
+      
         <div className="main-content">
-          {/* Left Column */}
+         
           <div className="left-column">
-            {/* Members Section */}
+           
             <section
               className="members-section"
               aria-labelledby="members-heading"
@@ -236,7 +235,7 @@ export default function GroupDetailsPage() {
               )}
             </section>
 
-            {/* Past Outings Section */}
+            
             {pastOutings.length > 0 && (
               <section
                 className="outings-section"
@@ -277,9 +276,9 @@ export default function GroupDetailsPage() {
             )}
           </div>
 
-          {/* Right Column */}
+     
           <div className="right-column">
-            {/* Upcoming Outings Section */}
+          
             <section
               className="outings-section"
               aria-labelledby="upcoming-heading"

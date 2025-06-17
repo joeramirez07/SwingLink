@@ -14,10 +14,10 @@ export default function JoinGroupForm({ onJoin }) {
     setError("");
     setSuccessMessage("");
 
-    // Clean the input - trim whitespace and convert to uppercase for consistency
+    
     const cleanCode = code.trim().toUpperCase();
 
-    // Basic validation
+    
     if (!cleanCode) {
       setError("Please enter an invite code");
       setIsLoading(false);
@@ -37,12 +37,11 @@ export default function JoinGroupForm({ onJoin }) {
       setError("");
       setSuccessMessage(`Successfully joined ${group.teamName}! 🎉`);
 
-      // Clear success message after 3 seconds
+      
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
       console.error("Join group error:", err);
 
-      // More specific error messages based on the error
       if (err.message.includes("404") || err.message.includes("not found")) {
         setError("This invite code doesn't exist. Please double-check it.");
       } else if (
@@ -75,7 +74,7 @@ export default function JoinGroupForm({ onJoin }) {
     const value = e.target.value;
     setCode(value);
 
-    // Clear errors as user types
+   
     if (error) {
       setError("");
     }
