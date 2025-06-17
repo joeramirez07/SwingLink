@@ -1,5 +1,7 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { logOut } from "../../services/authService";
+import GolfBadge from '../GolfBadge/GolfBadge';
+
 import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
@@ -27,6 +29,10 @@ export default function NavBar({ user, setUser }) {
             <NavLink to="/groups/new" className="nav-link">
               Create Group
             </NavLink>
+            <NavLink to="/schedule" className="nav-link">
+              My Schedule
+            </NavLink>
+            <GolfBadge user={user} />
             <div className="user-section">
               <span className="welcome-text">Welcome, {user.name}!</span>
               <Link to="/" onClick={handleLogOut} className="logout-link">

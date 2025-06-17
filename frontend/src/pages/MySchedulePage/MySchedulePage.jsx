@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as groupService from "../../services/groupService";
+import GolfCalendar from "../../components/GolfCalendar/GolfCalendar";
 import "./MySchedulePage.css";
 
 export default function MySchedulePage({ user }) {
@@ -8,6 +9,7 @@ export default function MySchedulePage({ user }) {
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
   const [filter, setFilter] = useState("upcoming");
+  const [viewMode, setViewMode] = useState("list");
 
   const navigate = useNavigate();
 
@@ -61,6 +63,10 @@ export default function MySchedulePage({ user }) {
     }
   }
 
+  function handleOutingClick(outing) {
+    navigate(`/groups/${outing.groupId}`);
+  }
+
   function isOutingToday(outingDate) {
     const today = new Date();
     const outing = new Date(outingDate);
@@ -112,134 +118,165 @@ export default function MySchedulePage({ user }) {
           </div>
         </header>
 
-        <div className="filter-tabs">
+        <div className="view-tabs">
           <button 
-            className={`filter-tab ${filter === "upcoming" ? "active" : ""}`}
-            onClick={() => setFilter("upcoming")}
+            className={`view-tab ${viewMode === "list" ? "active" : ""}`}
+            onClick={() => setViewMode("list")}
           >
-            Upcoming ({upcomingCount})
+            📋 List View
           </button>
           <button 
-            className={`filter-tab ${filter === "rsvped" ? "active" : ""}`}
-            onClick={() => setFilter("rsvped")}
+            className={`view-tab ${viewMode === "calendar" ? "active" : ""}`}
+            onClick={() => setViewMode("calendar")}
           >
-            My RSVPs ({rsvpedCount})
-          </button>
-          <button 
-            className={`filter-tab ${filter === "all" ? "active" : ""}`}
-            onClick={() => setFilter("all")}
-          >
-            All Outings ({allOutings.length})
+            📅 Calendar View
           </button>
         </div>
 
-        {errorMsg && (
-          <div className="error-message" role="alert" aria-live="polite">
-            {errorMsg}
-          </div>
-        )}
-
-        <section className="outings-section" aria-label="Golf outings">
-          {filteredOutings.length === 0 ? (
-            <div className="empty-state">
-              <div className="empty-icon">📅</div>
-              <h2>No outings found</h2>
-              <p>
-                {filter === "rsvped" 
-                  ? "You haven't RSVP'd to any upcoming outings yet."
-                  : filter === "upcoming"
-                  ? "No upcoming golf rounds scheduled."
-                  : "No outings in any of your groups."
-                }
-              </p>
+        {viewMode === "list" && (
+          <>
+            <div className="filter-tabs">
               <button 
-                className="btn-primary"
-                onClick={() => navigate("/groups")}
+                className={`filter-tab ${filter === "upcoming" ? "active" : ""}`}
+                onClick={() => setFilter("upcoming")}
               >
-                View Your Groups
+                Upcoming ({upcomingCount})
+              </button>
+              <button 
+                className={`filter-tab ${filter === "rsvped" ? "active" : ""}`}
+                onClick={() => setFilter("rsvped")}
+              >
+                My RSVPs ({rsvpedCount})
+              </button>
+              <button 
+                className={`filter-tab ${filter === "all" ? "active" : ""}`}
+                onClick={() => setFilter("all")}
+              >
+                All Outings ({allOutings.length})
               </button>
             </div>
-          ) : (
-            <div className="outings-list">
-              {filteredOutings.map((outing) => (
-                <article key={`${outing.groupId}-${outing._id}`} className="outing-card">
-                  <div className="outing-header">
-                    <div className="outing-main-info">
-                      <h3 className="outing-course">{outing.courseName}</h3>
-                      <p className="outing-group">
-                        <span className="group-label">Group:</span> {outing.groupName}
-                      </p>
-                    </div>
-                    
-                    <div className="outing-badges">
-                      {isOutingToday(outing.date) && (
-                        <span className="badge today">Today!</span>
-                      )}
-                      {isOutingThisWeek(outing.date) && !isOutingToday(outing.date) && (
-                        <span className="badge this-week">This Week</span>
-                      )}
-                      {outing.userRsvpd ? (
-                        <span className="badge going">You're Going</span>
-                      ) : (
-                        <span className="badge not-rsvped">RSVP Needed</span>
-                      )}
-                    </div>
-                  </div>
 
-                  <div className="outing-details">
-                    <div className="detail-item">
-                      <span className="detail-label">Date:</span>
-                      <span className="detail-value">
-                        {new Date(outing.date).toLocaleDateString('en-US', {
-                          weekday: 'long',
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                      </span>
-                    </div>
-                    
-                    <div className="detail-item">
-                      <span className="detail-label">Time:</span>
-                      <span className="detail-value">{outing.time}</span>
-                    </div>
-                    
-                    <div className="detail-item">
-                      <span className="detail-label">Players:</span>
-                      <span className="detail-value">
-                        {outing.goingCount} {outing.goingCount === 1 ? 'player' : 'players'} going
-                      </span>
-                    </div>
+            {errorMsg && (
+              <div className="error-message" role="alert" aria-live="polite">
+                {errorMsg}
+              </div>
+            )}
 
-                    {outing.notes && (
-                      <div className="detail-item">
-                        <span className="detail-label">Notes:</span>
-                        <span className="detail-value">{outing.notes}</span>
+            <section className="outings-section" aria-label="Golf outings">
+              {filteredOutings.length === 0 ? (
+                <div className="empty-state">
+                  <div className="empty-icon">📅</div>
+                  <h2>No outings found</h2>
+                  <p>
+                    {filter === "rsvped" 
+                      ? "You haven't RSVP'd to any upcoming outings yet."
+                      : filter === "upcoming"
+                      ? "No upcoming golf rounds scheduled."
+                      : "No outings in any of your groups."
+                    }
+                  </p>
+                  <button 
+                    className="btn-primary"
+                    onClick={() => navigate("/groups")}
+                  >
+                    View Your Groups
+                  </button>
+                </div>
+              ) : (
+                <div className="outings-list">
+                  {filteredOutings.map((outing) => (
+                    <article key={`${outing.groupId}-${outing._id}`} className="outing-card">
+                      <div className="outing-header">
+                        <div className="outing-main-info">
+                          <h3 className="outing-course">{outing.courseName}</h3>
+                          <p className="outing-group">
+                            <span className="group-label">Group:</span> {outing.groupName}
+                          </p>
+                        </div>
+                        
+                        <div className="outing-badges">
+                          {isOutingToday(outing.date) && (
+                            <span className="badge today">Today!</span>
+                          )}
+                          {isOutingThisWeek(outing.date) && !isOutingToday(outing.date) && (
+                            <span className="badge this-week">This Week</span>
+                          )}
+                          {outing.userRsvpd ? (
+                            <span className="badge going">You're Going</span>
+                          ) : (
+                            <span className="badge not-rsvped">RSVP Needed</span>
+                          )}
+                        </div>
                       </div>
-                    )}
-                  </div>
 
-                  <div className="outing-actions">
-                    <button
-                      className="btn-secondary"
-                      onClick={() => navigate(`/groups/${outing.groupId}`)}
-                    >
-                      View Group
-                    </button>
-                    {!outing.userRsvpd && new Date(outing.date) >= new Date() && (
-                      <button
-                        className="btn-primary"
-                        onClick={() => navigate(`/groups/${outing.groupId}`)}
-                      >
-                        RSVP Now
-                      </button>
-                    )}
-                  </div>
-                </article>
-              ))}
-            </div>
-          )}
-        </section>
+                      <div className="outing-details">
+                        <div className="detail-item">
+                          <span className="detail-label">Date:</span>
+                          <span className="detail-value">
+                            {new Date(outing.date).toLocaleDateString('en-US', {
+                              weekday: 'long',
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric'
+                            })}
+                          </span>
+                        </div>
+                        
+                        <div className="detail-item">
+                          <span className="detail-label">Time:</span>
+                          <span className="detail-value">{outing.time}</span>
+                        </div>
+                        
+                        <div className="detail-item">
+                          <span className="detail-label">Players:</span>
+                          <span className="detail-value">
+                            {outing.goingCount} {outing.goingCount === 1 ? 'player' : 'players'} going
+                          </span>
+                        </div>
+
+                        {outing.notes && (
+                          <div className="detail-item">
+                            <span className="detail-label">Notes:</span>
+                            <span className="detail-value">{outing.notes}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="outing-actions">
+                        <button
+                          className="btn-secondary"
+                          onClick={() => navigate(`/groups/${outing.groupId}`)}
+                        >
+                          View Group
+                        </button>
+                        {!outing.userRsvpd && new Date(outing.date) >= new Date() && (
+                          <button
+                            className="btn-primary"
+                            onClick={() => navigate(`/groups/${outing.groupId}`)}
+                          >
+                            RSVP Now
+                          </button>
+                        )}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </section>
+          </>
+        )}
+
+        {viewMode === "calendar" && (
+          <section className="calendar-section" aria-label="Golf calendar">
+            <GolfCalendar 
+              outings={allOutings.map(outing => ({
+                ...outing,
+                userRsvpd: outing.userRsvpd
+              }))}
+              onOutingClick={handleOutingClick}
+            />
+          </section>
+        )}
 
       </div>
     </main>
