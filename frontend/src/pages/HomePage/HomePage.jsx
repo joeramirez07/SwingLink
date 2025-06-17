@@ -7,6 +7,17 @@ export default function HomePage({ user }) {
   if (user) {
     return (
       <main className="dashboard" aria-label="User dashboard">
+        <video 
+          className="background-video"
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          preload="auto"
+        >
+          <source src="./videos/tigervideo.mp4" type="video/mp4" />
+        </video>
+        
         <div className="dashboard-content">
           <header className="dashboard-header">
             <h2>Time to Hit the Links, {user.name}! 🏌️‍♂️</h2>
@@ -34,6 +45,17 @@ export default function HomePage({ user }) {
 
   return (
     <div className="homepage">
+      <video 
+        className="background-video"
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+        preload="auto"
+      >
+        <source src="./videos/tigervideo.mp4" type="video/mp4" />
+      </video>
+
       <div className="homepage-content">
         <section className="hero" aria-labelledby="hero-heading">
           <div className="hero-container">
@@ -48,7 +70,7 @@ export default function HomePage({ user }) {
               coordination simple.
             </p>
             <p className="hero-note">
-              `` Join in 30 seconds. No credit card required.
+              Join in 30 seconds. No credit card required.
             </p>
           </div>
         </section>
@@ -96,7 +118,7 @@ export default function HomePage({ user }) {
               Create Free Account
             </button>
             <p id="signup-benefits" className="signup-note">
-              Join thousands of golfers already using SwingLink
+              Join thousands of golfers already using GolfSpot
             </p>
           </div>
         </section>
