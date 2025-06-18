@@ -15,7 +15,7 @@ export default function HomePage({ user }) {
           playsInline
           preload="auto"
         >
-          <source src="./videos/tigervideo2.mp4" type="video/mp4" />
+          <source src="./videos/tigervideo.mp4" type="video/mp4" />
         </video>
 
         <div className="dashboard-content">
