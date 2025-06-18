@@ -4,27 +4,27 @@
   --gray-light: #666;
   --gray-medium: #555;
   --gray-dark: #444;
-  
+
   --golf-green: #4caf50;
   --golf-green-light: #81c784;
   --golf-green-dark: #2d5016;
   --golf-green-hover: #45a049;
-  
+
   --danger: #dc3545;
   --success: #2e7d32;
-  
+
   --glass-bg: rgba(255, 255, 255, 0.25);
   --glass-border: rgba(255, 255, 255, 0.2);
   --glass-hover: rgba(255, 255, 255, 0.35);
-  
+
   --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
   --shadow-medium: 0 12px 40px rgba(0, 0, 0, 0.1);
   --shadow-heavy: 0 16px 48px rgba(0, 0, 0, 0.15);
-  
+
   --border-radius: 16px;
   --border-radius-large: 20px;
   --border-radius-xl: 24px;
-  
+
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -35,8 +35,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   z-index: -1;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .homepage,
@@ -109,13 +110,23 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--golf-green), var(--golf-green-light), var(--golf-green));
+  background: linear-gradient(
+    90deg,
+    var(--golf-green),
+    var(--golf-green-light),
+    var(--golf-green)
+  );
   animation: shimmer 3s ease-in-out infinite;
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .hero-title {

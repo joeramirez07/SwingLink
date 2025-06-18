@@ -28,7 +28,6 @@ export default function SignUpPage({ setUser }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
 
-  
     if (!validatePhone(formData.phoneNumber)) {
       setErrorMsg("Please enter a valid phone number");
       return;
@@ -42,7 +41,6 @@ export default function SignUpPage({ setUser }) {
       setUser(user);
       navigate("/groups");
     } catch (err) {
- 
       if (err.message.includes("email")) {
         setErrorMsg("Email already exists");
       } else if (err.message.includes("phone")) {
@@ -62,7 +60,7 @@ export default function SignUpPage({ setUser }) {
   return (
     <div className="container">
       <div className="signup-card">
-        <h2 className="golf-header">Join SwingLink</h2>
+        <h2 className="golf-header">Join GolfSpot</h2>
         <p className="golf-subtitle">Golf planning made simple</p>
 
         <form autoComplete="off" onSubmit={handleSubmit} className="golf-form">

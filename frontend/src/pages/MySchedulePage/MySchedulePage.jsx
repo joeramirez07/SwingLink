@@ -17,19 +17,25 @@ export default function MySchedulePage({ user }) {
     async function fetchMySchedule() {
       try {
         const userGroups = await groupService.getUserGroups();
-        
+
         const outings = [];
-        userGroups.forEach(group => {
+        userGroups.forEach((group) => {
           if (group.outings) {
-            group.outings.forEach(outing => {
+            group.outings.forEach((outing) => {
               outings.push({
                 ...outing,
                 groupId: group._id,
                 groupName: group.teamName,
-                userRsvpd: outing.players?.some(player => 
-                  !player.cancelled && (player.userId === user?._id || player.userId._id === user?._id)
-                ) || false,
-                goingCount: outing.players?.filter(player => !player.cancelled).length || 0
+                userRsvpd:
+                  outing.players?.some(
+                    (player) =>
+                      !player.cancelled &&
+                      (player.userId === user?._id ||
+                        player.userId._id === user?._id),
+                  ) || false,
+                goingCount:
+                  outing.players?.filter((player) => !player.cancelled)
+                    .length || 0,
               });
             });
           }
@@ -48,13 +54,13 @@ export default function MySchedulePage({ user }) {
 
   function getFilteredOutings() {
     const now = new Date();
-    
+
     switch (filter) {
       case "upcoming":
-        return allOutings.filter(outing => new Date(outing.date) >= now);
+        return allOutings.filter((outing) => new Date(outing.date) >= now);
       case "rsvped":
-        return allOutings.filter(outing => 
-          new Date(outing.date) >= now && outing.userRsvpd
+        return allOutings.filter(
+          (outing) => new Date(outing.date) >= now && outing.userRsvpd,
         );
       case "all":
         return allOutings;
@@ -93,19 +99,24 @@ export default function MySchedulePage({ user }) {
   }
 
   const filteredOutings = getFilteredOutings();
-  const upcomingCount = allOutings.filter(o => new Date(o.date) >= new Date()).length;
-  const rsvpedCount = allOutings.filter(o => new Date(o.date) >= new Date() && o.userRsvpd).length;
+  const upcomingCount = allOutings.filter(
+    (o) => new Date(o.date) >= new Date(),
+  ).length;
+  const rsvpedCount = allOutings.filter(
+    (o) => new Date(o.date) >= new Date() && o.userRsvpd,
+  ).length;
 
   return (
     <main className="schedule-page" aria-labelledby="schedule-heading">
       <div className="schedule-content">
-        
         <header className="schedule-header">
           <div className="header-content">
             <h1 id="schedule-heading">My Golf Schedule 🏌️‍♂️</h1>
-            <p className="schedule-subtitle">Your upcoming rounds across all groups</p>
+            <p className="schedule-subtitle">
+              Your upcoming rounds across all groups
+            </p>
           </div>
-          
+
           <div className="schedule-stats">
             <div className="stat-card">
               <span className="stat-number">{upcomingCount}</span>
@@ -119,13 +130,13 @@ export default function MySchedulePage({ user }) {
         </header>
 
         <div className="view-tabs">
-          <button 
+          <button
             className={`view-tab ${viewMode === "list" ? "active" : ""}`}
             onClick={() => setViewMode("list")}
           >
             📋 List View
           </button>
-          <button 
+          <button
             className={`view-tab ${viewMode === "calendar" ? "active" : ""}`}
             onClick={() => setViewMode("calendar")}
           >
@@ -136,19 +147,19 @@ export default function MySchedulePage({ user }) {
         {viewMode === "list" && (
           <>
             <div className="filter-tabs">
-              <button 
+              <button
                 className={`filter-tab ${filter === "upcoming" ? "active" : ""}`}
                 onClick={() => setFilter("upcoming")}
               >
                 Upcoming ({upcomingCount})
               </button>
-              <button 
+              <button
                 className={`filter-tab ${filter === "rsvped" ? "active" : ""}`}
                 onClick={() => setFilter("rsvped")}
               >
                 My RSVPs ({rsvpedCount})
               </button>
-              <button 
+              <button
                 className={`filter-tab ${filter === "all" ? "active" : ""}`}
                 onClick={() => setFilter("all")}
               >
@@ -168,14 +179,13 @@ export default function MySchedulePage({ user }) {
                   <div className="empty-icon">📅</div>
                   <h2>No outings found</h2>
                   <p>
-                    {filter === "rsvped" 
+                    {filter === "rsvped"
                       ? "You haven't RSVP'd to any upcoming outings yet."
                       : filter === "upcoming"
-                      ? "No upcoming golf rounds scheduled."
-                      : "No outings in any of your groups."
-                    }
+                        ? "No upcoming golf rounds scheduled."
+                        : "No outings in any of your groups."}
                   </p>
-                  <button 
+                  <button
                     className="btn-primary"
                     onClick={() => navigate("/groups")}
                   >
@@ -185,26 +195,33 @@ export default function MySchedulePage({ user }) {
               ) : (
                 <div className="outings-list">
                   {filteredOutings.map((outing) => (
-                    <article key={`${outing.groupId}-${outing._id}`} className="outing-card">
+                    <article
+                      key={`${outing.groupId}-${outing._id}`}
+                      className="outing-card"
+                    >
                       <div className="outing-header">
                         <div className="outing-main-info">
                           <h3 className="outing-course">{outing.courseName}</h3>
                           <p className="outing-group">
-                            <span className="group-label">Group:</span> {outing.groupName}
+                            <span className="group-label">Group:</span>{" "}
+                            {outing.groupName}
                           </p>
                         </div>
-                        
+
                         <div className="outing-badges">
                           {isOutingToday(outing.date) && (
                             <span className="badge today">Today!</span>
                           )}
-                          {isOutingThisWeek(outing.date) && !isOutingToday(outing.date) && (
-                            <span className="badge this-week">This Week</span>
-                          )}
+                          {isOutingThisWeek(outing.date) &&
+                            !isOutingToday(outing.date) && (
+                              <span className="badge this-week">This Week</span>
+                            )}
                           {outing.userRsvpd ? (
                             <span className="badge going">You're Going</span>
                           ) : (
-                            <span className="badge not-rsvped">RSVP Needed</span>
+                            <span className="badge not-rsvped">
+                              RSVP Needed
+                            </span>
                           )}
                         </div>
                       </div>
@@ -213,24 +230,26 @@ export default function MySchedulePage({ user }) {
                         <div className="detail-item">
                           <span className="detail-label">Date:</span>
                           <span className="detail-value">
-                            {new Date(outing.date).toLocaleDateString('en-US', {
-                              weekday: 'long',
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
+                            {new Date(outing.date).toLocaleDateString("en-US", {
+                              weekday: "long",
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
                             })}
                           </span>
                         </div>
-                        
+
                         <div className="detail-item">
                           <span className="detail-label">Time:</span>
                           <span className="detail-value">{outing.time}</span>
                         </div>
-                        
+
                         <div className="detail-item">
                           <span className="detail-label">Players:</span>
                           <span className="detail-value">
-                            {outing.goingCount} {outing.goingCount === 1 ? 'player' : 'players'} going
+                            {outing.goingCount}{" "}
+                            {outing.goingCount === 1 ? "player" : "players"}{" "}
+                            going
                           </span>
                         </div>
 
@@ -249,14 +268,17 @@ export default function MySchedulePage({ user }) {
                         >
                           View Group
                         </button>
-                        {!outing.userRsvpd && new Date(outing.date) >= new Date() && (
-                          <button
-                            className="btn-primary"
-                            onClick={() => navigate(`/groups/${outing.groupId}`)}
-                          >
-                            RSVP Now
-                          </button>
-                        )}
+                        {!outing.userRsvpd &&
+                          new Date(outing.date) >= new Date() && (
+                            <button
+                              className="btn-primary"
+                              onClick={() =>
+                                navigate(`/groups/${outing.groupId}`)
+                              }
+                            >
+                              RSVP Now
+                            </button>
+                          )}
                       </div>
                     </article>
                   ))}
@@ -268,16 +290,15 @@ export default function MySchedulePage({ user }) {
 
         {viewMode === "calendar" && (
           <section className="calendar-section" aria-label="Golf calendar">
-            <GolfCalendar 
-              outings={allOutings.map(outing => ({
+            <GolfCalendar
+              outings={allOutings.map((outing) => ({
                 ...outing,
-                userRsvpd: outing.userRsvpd
+                userRsvpd: outing.userRsvpd,
               }))}
               onOutingClick={handleOutingClick}
             />
           </section>
         )}
-
       </div>
     </main>
   );

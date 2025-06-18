@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../services/authService";
@@ -27,8 +26,11 @@ export default function App() {
             <Route path="/" element={<HomePage user={user} />} />
             <Route path="/groups" element={<GroupsPage user={user} />} />
             <Route path="/groups/new" element={<CreateGroupPage />} />
-            <Route path="/groups/:id" element={<GroupDetailsPage />} /> 
-            <Route path="/groups/:id/outings/new" element={<CreateOutingPage />} />
+            <Route path="/groups/:id" element={<GroupDetailsPage />} />
+            <Route
+              path="/groups/:id/outings/new"
+              element={<CreateOutingPage />}
+            />
             <Route path="/schedule" element={<MySchedulePage user={user} />} />
             <Route path="*" element={null} />
           </Routes>

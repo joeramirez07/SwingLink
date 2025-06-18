@@ -29,32 +29,30 @@ export default function GroupsPage({ user }) {
     navigate("/groups/new");
   }
 
-  // Helper function to get next upcoming outing
   function getNextOuting(outings) {
     if (!outings || outings.length === 0) return null;
-    
+
     const now = new Date();
     const upcomingOutings = outings
-      .filter(outing => new Date(outing.date) >= now)
+      .filter((outing) => new Date(outing.date) >= now)
       .sort((a, b) => new Date(a.date) - new Date(b.date));
-    
+
     return upcomingOutings[0] || null;
   }
 
-  // Helper function to get RSVP status and count
   function getRsvpInfo(outing, userId) {
     if (!outing || !outing.players) {
       return { userRsvpd: false, goingCount: 0 };
     }
-    
-    const goingPlayers = outing.players.filter(player => !player.cancelled);
-    const userRsvpd = goingPlayers.some(player => 
-      player.userId === userId || player.userId._id === userId
+
+    const goingPlayers = outing.players.filter((player) => !player.cancelled);
+    const userRsvpd = goingPlayers.some(
+      (player) => player.userId === userId || player.userId._id === userId,
     );
-    
+
     return {
       userRsvpd,
-      goingCount: goingPlayers.length
+      goingCount: goingPlayers.length,
     };
   }
 
@@ -77,13 +75,6 @@ export default function GroupsPage({ user }) {
           <p className="groups-subtitle">Your golf crews and upcoming rounds</p>
         </header>
 
-        <section className="join-section" aria-labelledby="join-heading">
-          <h2 id="join-heading" className="visually-hidden">Join a group</h2>
-          <JoinGroupForm
-            onJoin={(newGroup) => setGroups([...groups, newGroup])}
-          />
-        </section>
-
         {errorMsg && (
           <div className="error-message" role="alert" aria-live="polite">
             {errorMsg}
@@ -95,8 +86,10 @@ export default function GroupsPage({ user }) {
             <div className="groups-grid">
               {groups.map((group) => {
                 const nextOuting = getNextOuting(group.outings);
-                const rsvpInfo = nextOuting ? getRsvpInfo(nextOuting, user?._id) : null;
-                
+                const rsvpInfo = nextOuting
+                  ? getRsvpInfo(nextOuting, user?._id)
+                  : null;
+
                 return (
                   <article key={group._id} className="group-card">
                     <div className="card-header">
@@ -115,13 +108,17 @@ export default function GroupsPage({ user }) {
                             <strong>{nextOuting.courseName}</strong>
                           </p>
                           <p className="round-date">
-                            {new Date(nextOuting.date).toLocaleDateString('en-US', {
-                              weekday: 'short',
-                              month: 'short',
-                              day: 'numeric'
-                            })} at {nextOuting.time}
+                            {new Date(nextOuting.date).toLocaleDateString(
+                              "en-US",
+                              {
+                                weekday: "short",
+                                month: "short",
+                                day: "numeric",
+                              },
+                            )}{" "}
+                            at {nextOuting.time}
                           </p>
-                          
+
                           {rsvpInfo && (
                             <div className="rsvp-status">
                               {rsvpInfo.userRsvpd ? (
@@ -134,15 +131,23 @@ export default function GroupsPage({ user }) {
                                 </span>
                               )}
                               <span className="going-count">
-                                {rsvpInfo.goingCount} {rsvpInfo.goingCount === 1 ? 'player' : 'players'} going
+                                {rsvpInfo.goingCount}{" "}
+                                {rsvpInfo.goingCount === 1
+                                  ? "player"
+                                  : "players"}{" "}
+                                going
                               </span>
                             </div>
                           )}
                         </div>
                       ) : (
                         <div className="no-rounds">
-                          <span className="no-rounds-text">No upcoming rounds</span>
-                          <p className="suggestion">Create your first outing!</p>
+                          <span className="no-rounds-text">
+                            No upcoming rounds
+                          </span>
+                          <p className="suggestion">
+                            Create your first outing!
+                          </p>
                         </div>
                       )}
                     </div>
@@ -157,7 +162,9 @@ export default function GroupsPage({ user }) {
                       </button>
                       <button
                         className="btn-secondary"
-                        onClick={() => navigate(`/groups/${group._id}/outings/new`)}
+                        onClick={() =>
+                          navigate(`/groups/${group._id}/outings/new`)
+                        }
                         aria-label={`Create new outing for ${group.teamName}`}
                       >
                         Create Outing
@@ -173,11 +180,14 @@ export default function GroupsPage({ user }) {
             <div className="empty-content">
               <div className="golf-icon">🏌️‍♂️</div>
               <h2 id="empty-heading">Ready to Tee Off?</h2>
-              <p>Create your first golf group and start organizing amazing rounds with friends!</p>
-              
+              <p>
+                Create your first golf group and start organizing amazing rounds
+                with friends!
+              </p>
+
               <div className="cta-section">
-                <button 
-                  className="btn-primary btn-large" 
+                <button
+                  className="btn-primary btn-large"
                   onClick={handleCreateGroupClick}
                   aria-describedby="create-group-desc"
                 >
@@ -190,6 +200,15 @@ export default function GroupsPage({ user }) {
             </div>
           </section>
         )}
+
+        <section className="join-section" aria-labelledby="join-heading">
+          <h2 id="join-heading" className="visually-hidden">
+            Join a group
+          </h2>
+          <JoinGroupForm
+            onJoin={(newGroup) => setGroups([...groups, newGroup])}
+          />
+        </section>
       </div>
     </main>
   );

@@ -18,7 +18,6 @@ export default function NavBar({ user, setUser }) {
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
-        
         <div className="nav-brand">
           <NavLink to="/" className="brand-link" aria-label="GolfSpot home">
             GolfSpot
@@ -29,18 +28,22 @@ export default function NavBar({ user, setUser }) {
           {user ? (
             <>
               <div className="nav-links">
-                <NavLink 
-                  to="/groups" 
-                  end 
-                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                <NavLink
+                  to="/groups"
+                  end
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
                   aria-label="View your golf groups"
                 >
                   My Groups
                 </NavLink>
-                
-                <NavLink 
-                  to="/schedule" 
-                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+
+                <NavLink
+                  to="/schedule"
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
                   aria-label="View your golf schedule"
                 >
                   My Schedule
@@ -49,15 +52,15 @@ export default function NavBar({ user, setUser }) {
 
               <div className="nav-actions">
                 <div className="action-buttons">
-                  <NavLink 
-                    to="/groups/new" 
+                  <NavLink
+                    to="/groups/new"
                     className="action-btn create-group-btn"
                     aria-label="Create a new golf group"
                   >
                     Create Group
                   </NavLink>
-                  
-                  <button 
+
+                  <button
                     onClick={handleCreateOuting}
                     className="action-btn create-outing-btn"
                     aria-label="Create a new golf outing"
@@ -66,18 +69,20 @@ export default function NavBar({ user, setUser }) {
                     Create Outing
                   </button>
                 </div>
-                
+
                 <div className="user-section">
                   <div className="user-info">
-                    <span className="user-avatar">{user.name.charAt(0).toUpperCase()}</span>
+                    <span className="user-avatar">
+                      {user.name.charAt(0).toUpperCase()}
+                    </span>
                     <div className="user-details">
                       <span className="welcome-text">Welcome back!</span>
                       <span className="user-name">{user.name}</span>
                     </div>
                   </div>
-                  
-                  <button 
-                    onClick={handleLogOut} 
+
+                  <button
+                    onClick={handleLogOut}
                     className="logout-btn"
                     aria-label="Log out of your account"
                   >
@@ -88,22 +93,25 @@ export default function NavBar({ user, setUser }) {
             </>
           ) : (
             <div className="auth-links">
-              <NavLink 
-                to="/login" 
-                className={({ isActive }) => `nav-link auth-link ${isActive ? 'active' : ''}`}
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  `nav-link auth-link ${isActive ? "active" : ""}`
+                }
               >
                 Log In
               </NavLink>
-              <NavLink 
-                to="/signup" 
-                className={({ isActive }) => `nav-link signup-btn ${isActive ? 'active' : ''}`}
+              <NavLink
+                to="/signup"
+                className={({ isActive }) =>
+                  `nav-link signup-btn ${isActive ? "active" : ""}`
+                }
               >
                 Sign Up
               </NavLink>
             </div>
           )}
         </div>
-
       </div>
     </nav>
   );

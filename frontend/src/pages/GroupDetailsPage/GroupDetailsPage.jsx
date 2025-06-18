@@ -51,34 +51,32 @@ export default function GroupDetailsPage() {
   }
 
   async function handleRsvp(outingId) {
-  setRsvpLoading(prev => new Set(prev).add(outingId));
-  setErrorMsg("");
-  
-  try {
-    await rsvpToOuting(group._id, outingId); 
-    
-    const updatedGroup = await getGroupDetails(id);
-    setGroup(updatedGroup);
-  } catch (err) {
-    setErrorMsg("Failed to RSVP. Please try again.");
-  } finally {
-    setRsvpLoading(prev => {
-      const newSet = new Set(prev);
-      newSet.delete(outingId);
-      return newSet;
-    });
+    setRsvpLoading((prev) => new Set(prev).add(outingId));
+    setErrorMsg("");
+
+    try {
+      await rsvpToOuting(group._id, outingId);
+
+      const updatedGroup = await getGroupDetails(id);
+      setGroup(updatedGroup);
+    } catch (err) {
+      setErrorMsg("Failed to RSVP. Please try again.");
+    } finally {
+      setRsvpLoading((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(outingId);
+        return newSet;
+      });
+    }
   }
-}
 
   function copyInviteCode() {
     navigator.clipboard
       .writeText(group.inviteLink)
       .then(() => {
-       
         alert("Invite code copied to clipboard!");
       })
       .catch(() => {
-       
         setErrorMsg(
           "Could not copy invite code. Please copy manually: " +
             group.inviteLink,
@@ -90,14 +88,12 @@ export default function GroupDetailsPage() {
     return new Date(outingDate) < new Date();
   }
 
-  
   function getUpcomingOutings() {
     if (!group?.outings) return [];
     return group.outings
       .filter((outing) => !isOutingPast(outing.date))
       .sort((a, b) => new Date(a.date) - new Date(b.date));
   }
-
 
   function getPastOutings() {
     if (!group?.outings) return [];
@@ -137,7 +133,6 @@ export default function GroupDetailsPage() {
   return (
     <main className="group-details-page" aria-labelledby="group-title">
       <div className="group-details-content">
-      
         <header className="group-header">
           <div className="header-content">
             <h1 id="group-title" className="group-title">
@@ -174,14 +169,12 @@ export default function GroupDetailsPage() {
           </div>
         </header>
 
-       
         {errorMsg && (
           <div className="error-message" role="alert" aria-live="polite">
             {errorMsg}
           </div>
         )}
 
-       
         <section className="invite-section" aria-labelledby="invite-heading">
           <h2 id="invite-heading" className="visually-hidden">
             Group Invite
@@ -201,11 +194,8 @@ export default function GroupDetailsPage() {
           </div>
         </section>
 
-      
         <div className="main-content">
-         
           <div className="left-column">
-           
             <section
               className="members-section"
               aria-labelledby="members-heading"
@@ -235,7 +225,6 @@ export default function GroupDetailsPage() {
               )}
             </section>
 
-            
             {pastOutings.length > 0 && (
               <section
                 className="outings-section"
@@ -276,9 +265,7 @@ export default function GroupDetailsPage() {
             )}
           </div>
 
-     
           <div className="right-column">
-          
             <section
               className="outings-section"
               aria-labelledby="upcoming-heading"

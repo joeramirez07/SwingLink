@@ -243,42 +243,42 @@
   .golf-calendar {
     padding: 1rem;
   }
-  
+
   .calendar-header {
     flex-direction: column;
     gap: 1rem;
     align-items: stretch;
   }
-  
+
   .month-navigation {
     justify-content: center;
   }
-  
+
   .month-year {
     font-size: 1.2rem;
     min-width: auto;
   }
-  
+
   .nav-btn {
     width: 36px;
     height: 36px;
     font-size: 1rem;
   }
-  
+
   .calendar-day {
     min-height: 60px;
     padding: 0.25rem;
   }
-  
+
   .day-number {
     font-size: 0.8rem;
   }
-  
+
   .outing-dot {
     font-size: 0.6rem;
     padding: 0.1rem 0.2rem;
   }
-  
+
   .calendar-legend {
     flex-direction: column;
     align-items: center;
@@ -290,30 +290,31 @@
   .golf-calendar {
     padding: 0.75rem;
   }
-  
+
   .calendar-day {
     min-height: 50px;
     padding: 0.2rem;
   }
-  
+
   .day-number {
     font-size: 0.7rem;
   }
-  
+
   .outing-dot {
     font-size: 0.55rem;
     padding: 0.05rem 0.15rem;
   }
-  
+
   .dot-text {
     max-width: 30px;
   }
-  
+
   .day-header {
     padding: 0.5rem 0.25rem;
     font-size: 0.7rem;
   }
-  
+
   .month-year {
     font-size: 1rem;
-  }}
+  }
+}

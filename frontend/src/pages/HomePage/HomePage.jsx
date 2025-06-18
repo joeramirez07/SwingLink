@@ -7,17 +7,17 @@ export default function HomePage({ user }) {
   if (user) {
     return (
       <main className="dashboard" aria-label="User dashboard">
-        <video 
+        <video
           className="background-video"
-          autoPlay 
-          muted 
-          loop 
+          autoPlay
+          muted
+          loop
           playsInline
           preload="auto"
         >
-          <source src="./videos/tigervideo.mp4" type="video/mp4" />
+          <source src="./videos/tigervideo2.mp4" type="video/mp4" />
         </video>
-        
+
         <div className="dashboard-content">
           <header className="dashboard-header">
             <h2>Time to Hit the Links, {user.name}! 🏌️‍♂️</h2>
@@ -45,16 +45,14 @@ export default function HomePage({ user }) {
 
   return (
     <div className="homepage">
-      <video 
+      <video
         className="background-video"
-        autoPlay 
-        muted 
-        loop 
+        autoPlay
+        muted
+        loop
         playsInline
         preload="auto"
-      >
-        <source src="./videos/tigervideo.mp4" type="video/mp4" />
-      </video>
+      ></video>
 
       <div className="homepage-content">
         <section className="hero" aria-labelledby="hero-heading">

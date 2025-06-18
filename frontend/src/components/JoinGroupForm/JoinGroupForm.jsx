@@ -14,10 +14,8 @@ export default function JoinGroupForm({ onJoin }) {
     setError("");
     setSuccessMessage("");
 
-    
     const cleanCode = code.trim().toUpperCase();
 
-    
     if (!cleanCode) {
       setError("Please enter an invite code");
       setIsLoading(false);
@@ -37,7 +35,6 @@ export default function JoinGroupForm({ onJoin }) {
       setError("");
       setSuccessMessage(`Successfully joined ${group.teamName}! 🎉`);
 
-      
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
       console.error("Join group error:", err);
@@ -74,7 +71,6 @@ export default function JoinGroupForm({ onJoin }) {
     const value = e.target.value;
     setCode(value);
 
-   
     if (error) {
       setError("");
     }
