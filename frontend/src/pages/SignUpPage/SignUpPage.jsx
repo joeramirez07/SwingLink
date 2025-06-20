@@ -150,9 +150,11 @@ export default function SignUpPage({ setUser }) {
           </button>
         </form>
 
-        <p id="error-msg" className="error-message" role="alert">
-          &nbsp;{errorMsg}
-        </p>
+        {errorMsg && (
+          <p id="error-msg" className="error-message" role="alert">
+            {errorMsg}
+          </p>
+        )}
 
         <p className="signin-link">
           Already have an account? <Link to="/login">Sign In</Link>
