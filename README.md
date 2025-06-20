@@ -23,11 +23,17 @@ Features
 
  Screenshots
 
-Homepage
-<img src="https://imgur.com/xsmouCs.png" alt="Screenshot">
+Landing Page
+<img src="https://imgur.com/sJtUFQd.png" alt="Screenshot">
 
-Experience Card 
-<img src="https://imgur.com/S7BO4CL.png" alt="Screenshot">
+Sign Up Page
+<img src="https://imgur.com/xK3vElS.png" alt="Screenshot">
+
+My Groups Page
+<img src="https://imgur.com/Ojx6XNA.png" alt="Screenshot">
+
+Calendar View
+<img src="https://imgur.com/7rRiuIY.png" alt="Screenshot">
 
 ---
 
