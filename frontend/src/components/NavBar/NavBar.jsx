@@ -11,10 +11,6 @@ export default function NavBar({ user, setUser }) {
     navigate("/");
   }
 
-  function handleCreateOuting() {
-    navigate("/groups");
-  }
-
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       <div className="navbar-container">
@@ -59,15 +55,6 @@ export default function NavBar({ user, setUser }) {
                   >
                     Create Group
                   </NavLink>
-
-                  <button
-                    onClick={handleCreateOuting}
-                    className="action-btn create-outing-btn"
-                    aria-label="Create a new golf outing"
-                    title="Choose a group to create an outing"
-                  >
-                    Create Outing
-                  </button>
                 </div>
 
                 <div className="user-section">
