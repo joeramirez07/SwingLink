@@ -21,24 +21,30 @@ Features
 
 ---
 
-## 📸 Screenshots
+Screenshots
 
-<div align="center">
-
-**Landing Page**  
-<img src="https://imgur.com/sJtUFQd.png" alt="Landing Page" width="300px">
-
-**Sign Up Page**  
-<img src="https://imgur.com/xK3vElS.png" alt="Sign Up Page" width="300px">
-
-**My Groups Page**  
-<img src="https://imgur.com/Ojx6XNA.png" alt="My Groups Page" width="300px">
-
-**Calendar View**  
-<img src="https://imgur.com/7rRiuIY.png" alt="Calendar View" width="300px">
-
-</div>
----
+<table>
+  <tr>
+    <td align="center">
+      <strong>Landing Page</strong><br>
+      <img src="https://imgur.com/sJtUFQd.png" alt="Landing Page" width="150px">
+    </td>
+    <td align="center">
+      <strong>Sign Up Page</strong><br>
+      <img src="https://imgur.com/xK3vElS.png" alt="Sign Up Page" width="150px">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>My Groups Page</strong><br>
+      <img src="https://imgur.com/Ojx6XNA.png" alt="My Groups Page" width="150px">
+    </td>
+    <td align="center">
+      <strong>Calendar View</strong><br>
+      <img src="https://imgur.com/7rRiuIY.png" alt="Calendar View" width="150px">
+    </td>
+  </tr>
+</table>
 
 ## Built With
 
