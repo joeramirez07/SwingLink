@@ -1,8 +1,8 @@
- GolfSpot
+# GolfSpot
 
 GolfSpot is a golf group management platform that helps golfers create, organize, and manage golf groups and outings with friends and fellow players.
 
-Description
+## Description
 
 GolfSpot is a web application designed to help golf enthusiasts build communities around their favorite sport. Whether you're organizing a weekly foursome or planning a golf trip with friends, GolfSpot makes it easy to manage groups and coordinate outings. This project was developed by Joe Ramirez as a full-stack MERN application.
 
@@ -10,7 +10,7 @@ GolfSpot is for golfers who want to stay connected with their golf buddies and n
 
 ---
 
-Features
+## Features
 
 - Create and manage golf groups with friends
 - User authentication and secure group management
@@ -21,7 +21,7 @@ Features
 
 ---
 
-Screenshots
+## Screenshots
 
 <table>
   <tr>
@@ -66,8 +66,6 @@ Screenshots
 ## Getting Started
 
 [Click here to start using GolfSpot!](https://swinglink-3564006bf37d.herokuapp.com/)
-
-
 
 ## Next Steps
 

@@ -56,12 +56,11 @@ export default function GroupDetailsPage() {
 
     try {
       await rsvpToOuting(group._id, outingId);
-
-      const updatedGroup = await getGroupDetails(id);
-      setGroup(updatedGroup);
+      
+    
+      navigate("/schedule");
     } catch (err) {
       setErrorMsg("Failed to RSVP. Please try again.");
-    } finally {
       setRsvpLoading((prev) => {
         const newSet = new Set(prev);
         newSet.delete(outingId);
