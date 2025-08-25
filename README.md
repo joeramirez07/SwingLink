@@ -27,21 +27,8 @@ GolfSpot is for golfers who want to stay connected with their golf buddies and n
   <tr>
     <td align="center">
       <strong>Landing Page</strong><br>
-      <img src="https://imgur.com/sJtUFQd.png" alt="Landing Page" width="150px">
+      <img src="[https://imgur.com/sJtUFQd.png](https://imgur.com/Ky9Ytwu)" alt="Landing Page" width="150px">
     </td>
-    <td align="center">
-      <strong>Sign Up Page</strong><br>
-      <img src="https://imgur.com/xK3vElS.png" alt="Sign Up Page" width="150px">
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <strong>My Groups Page</strong><br>
-      <img src="https://imgur.com/Ojx6XNA.png" alt="My Groups Page" width="150px">
-    </td>
-    <td align="center">
-      <strong>Calendar View</strong><br>
-      <img src="https://imgur.com/7rRiuIY.png" alt="Calendar View" width="150px">
     </td>
   </tr>
 </table>
