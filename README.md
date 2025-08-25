@@ -27,7 +27,7 @@ GolfSpot is for golfers who want to stay connected with their golf buddies and n
   <tr>
     <td align="center">
       <strong>Landing Page</strong><br>
-      <img src="[https://imgur.com/sJtUFQd.png](https://imgur.com/Ky9Ytwu)" alt="Landing Page" width="150px">
+      <img src="https://imgur.com/a/WaXan0g alt="Landing Page" width="150px">
     </td>
     </td>
   </tr>
